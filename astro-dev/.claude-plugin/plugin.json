@@ -1,6 +1,6 @@
 {
   "name": "astro-dev",
-  "description": "Intelligent Astro/Starlight development toolkit with orchestrator-based workflows, adaptive validation, and smart context loading",
+  "description": "Astro/Starlight development toolkit with orchestrator-based workflows and configurable validation",
   "version": "2.0.0",
   "author": {
     "name": "rathremercurial.eth",
@@ -12,19 +12,19 @@
   "agents": {
     "astro-orchestrator": {
       "path": "agents/astro-orchestrator.md",
-      "description": "Intelligent task coordinator with adaptive planning and resource optimization"
+      "description": "Coordinates tasks and manages agent workflows"
     },
     "astro-developer": {
       "path": "agents/astro-developer.md",
-      "description": "Primary code implementation specialist for Astro/Starlight projects"
+      "description": "Handles code implementation for Astro/Starlight projects"
     },
     "astro-auditor": {
       "path": "agents/astro-auditor.md",
-      "description": "Adaptive code validator with configurable rigor levels (light/medium/comprehensive)"
+      "description": "Validates code with configurable rigor levels"
     },
     "astro-architect": {
       "path": "agents/astro-architect.md",
-      "description": "Content architecture specialist for complex system design and planning"
+      "description": "Plans content architecture and system design"
     }
   },
   "commands": {
@@ -39,12 +39,12 @@
     {
       "name": "astro-coding",
       "path": "skills/astro-coding",
-      "description": "Smart context provider for code implementation with selective pattern loading"
+      "description": "Provides coding patterns and best practices with selective loading"
     },
     {
       "name": "astro-knowledge",
       "path": "skills/astro-knowledge",
-      "description": "On-demand API documentation and reference lookup with MCP integration"
+      "description": "API documentation and reference lookup"
     }
   ]
 }

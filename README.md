@@ -4,7 +4,7 @@ Local Claude Code plugin marketplace for Astro and Starlight development tools.
 
 ## Overview
 
-This repository contains a complete plugin marketplace for Claude Code, featuring the **astro-dev v2.0** plugin - an intelligent, orchestrator-based toolkit for Astro and Starlight development.
+This repository contains a plugin marketplace for Claude Code, featuring the **astro-dev v2.0** plugin - a toolkit for Astro and Starlight development.
 
 ## Quick Start
 
@@ -44,48 +44,40 @@ This repository contains a complete plugin marketplace for Claude Code, featurin
 
 ### Astro Dev Plugin (v2.0.0)
 
-An intelligent, orchestrator-based toolkit for Astro and Starlight development with adaptive workflows and 50% token reduction.
+A toolkit for Astro and Starlight development with orchestrator-based workflows.
 
 #### 🤖 Agents
-- **astro-orchestrator**: Intelligent task coordinator with adaptive planning
-- **astro-developer**: Primary code implementation specialist
-- **astro-auditor**: Adaptive validator with 3 rigor levels (light/medium/comprehensive)
-- **astro-architect**: Content architecture specialist for complex system design
+- **astro-orchestrator**: Coordinates tasks and manages agent workflows
+- **astro-developer**: Handles code implementation
+- **astro-auditor**: Validates code with configurable rigor levels
+- **astro-architect**: Plans content architecture and system design
 
 #### 🎯 Skills
-- **astro-coding**: Smart context provider with selective pattern loading
-- **astro-knowledge**: On-demand API documentation and reference lookup
+- **astro-coding**: Provides coding patterns and best practices
+- **astro-knowledge**: API documentation and reference lookup
 
 #### ⚡ Commands
-- `/develop` - Intelligent orchestrated workflow (primary command)
-- `/implement` - Direct implementation (bypass orchestration)
+- `/develop` - Orchestrated workflow
+- `/implement` - Direct implementation
 - `/architect` - Architecture planning
-- `/audit [level]` - Adaptive validation (light/medium/comprehensive/auto)
-- `/lookup` - Quick API reference
+- `/audit [level]` - Code validation (light/medium/comprehensive/auto)
+- `/lookup` - API reference
 
-#### 📚 Knowledge Base (50% optimized)
+#### 📚 Knowledge Base
 - Error catalog (indexed by symptom)
 - Astro patterns (components, routing, collections)
-- Starlight guide (complete documentation)
+- Starlight guide
 - Integrations (loaders, TypeScript, external data)
-- Quick navigation and cross-references
 
 ## Usage
 
-### Primary Workflow (Recommended)
+### Primary Workflow
 
 ```bash
 /develop Add a blog with categories and pagination
 ```
 
-The orchestrator will:
-1. Analyze your request
-2. Determine needed agents (architect → developer → auditor)
-3. Load only relevant patterns
-4. Coordinate implementation
-5. Validate with appropriate rigor
-
-**Benefits**: Intelligent automation, optimal token usage, adaptive validation.
+The orchestrator analyzes your request, determines which agents to use, loads relevant patterns, and coordinates implementation.
 
 ### Direct Implementation
 
@@ -93,7 +85,7 @@ The orchestrator will:
 /implement Create a Card component
 ```
 
-Bypasses orchestration for straightforward coding tasks.
+Bypasses orchestration for straightforward tasks.
 
 ### Architecture Planning
 
@@ -101,17 +93,17 @@ Bypasses orchestration for straightforward coding tasks.
 /architect Design a multi-language docs system with versioning
 ```
 
-Get system design, schemas, and implementation roadmap without coding.
+Get system design and schemas without immediate implementation.
 
-### Adaptive Validation
+### Code Validation
 
 ```bash
-/audit auto src/pages/           # Auto-determines level
+/audit auto src/pages/           # Determines appropriate level
 /audit light src/components/Button.astro    # Quick check
-/audit comprehensive src/lib/auth.ts         # Full validation
+/audit comprehensive src/lib/auth.ts         # Thorough validation
 ```
 
-Choose rigor based on task complexity, or let the auditor decide.
+Choose validation rigor based on task complexity.
 
 ### API Reference
 
@@ -120,37 +112,32 @@ Choose rigor based on task complexity, or let the auditor decide.
 /lookup client directives
 ```
 
-Fast documentation lookup with current syntax and examples.
+Quick documentation lookup with syntax and examples.
 
 ## Features
 
 ### v2.0 Architecture
 
-**Intelligent Orchestration**:
+**Orchestration**:
 - Task analysis and execution planning
 - Agent coordination with parallel execution
-- Adaptive audit rigor determination
-- Token optimization through smart loading
+- Configurable validation rigor
+- Selective context loading
 
-**Clear Separation**:
-- Agents perform actions (orchestrate, implement, audit, design)
-- Skills provide capabilities (coding patterns, documentation)
+**Organization**:
+- Agents handle tasks
+- Skills provide context and patterns
+- Commands offer direct access
 
-**Token Efficiency**:
-- 93% reduction for simple tasks (11,500 → 800 tokens)
-- 89% reduction for medium tasks (11,500 → 1,200 tokens)
-- 80% reduction for complex tasks (11,500 → 2,250 tokens)
+**Efficiency**:
+- Reduced token usage for most tasks
+- Consolidated knowledge base
+- Selective pattern loading
 
-**Adaptive Quality**:
-- Light audit (5 checks, ~30 seconds) for small changes
-- Medium audit (20 checks, ~2 minutes) for standard work
-- Comprehensive audit (50+ checks, ~5 minutes) for critical areas
-
-### Developer Experience
-- **Single Entry Point**: `/develop` handles everything intelligently
-- **Discoverable Features**: All agents accessible via commands
-- **Error Prevention**: Catches mistakes before they cause issues
-- **Comprehensive Knowledge**: Deep Astro/Starlight expertise
+**Validation**:
+- Light (5 checks, ~30 seconds) for small changes
+- Medium (20 checks, ~2 minutes) for standard work
+- Comprehensive (50+ checks, ~5 minutes) for critical areas
 
 ## Requirements
 
@@ -166,17 +153,17 @@ Fast documentation lookup with current syntax and examples.
 - `/docs-lookup` renamed to `/lookup`
 - `astro-developer` skill renamed to `astro-coding`
 - `astro-docs` skill renamed to `astro-knowledge`
-- Auto-audit hooks removed (use orchestrator instead)
+- Auto-audit hooks removed
 
 ### New Features
 - `/develop` command for orchestrated workflows
-- `/architect` command for design planning
-- Adaptive audit levels (light/medium/comprehensive/auto)
-- 50% token reduction through knowledge base consolidation
+- `/architect` command for planning
+- Configurable audit levels
+- Consolidated knowledge base
 
 ### Backward Compatibility
-- `/implement` and `/audit` commands still work (updated)
-- Knowledge base content preserved (reorganized)
+- `/implement` and `/audit` commands still work
+- Knowledge base content preserved
 - All patterns and references maintained
 
 ## Contributing
@@ -185,17 +172,17 @@ This plugin is maintained by the SuperBenefit community. Contributions are welco
 
 ### Adding Knowledge
 - Update consolidated files in `astro-dev/knowledge-base/`
-- Error catalog for new common mistakes
-- Astro patterns for new features
+- Add error patterns to error catalog
+- Document new Astro features in patterns
 
 ### Improving Skills
-- Enhance `astro-coding` patterns in `skills/astro-coding/`
+- Enhance patterns in `skills/astro-coding/`
 - Add API references to `astro-knowledge`
 
 ### Extending Agents
 - Improve agent capabilities in `agents/*.md`
-- Enhance orchestration logic
-- Add specialized agents for new domains
+- Refine orchestration logic
+- Add specialized agents
 
 ## Architecture
 
@@ -222,8 +209,6 @@ For issues, questions, or contributions:
 ## Credits
 
 Created by rathremercurial.eth for the SuperBenefit community.
-
-Built with Claude Code plugin architecture v2.0 for intelligent orchestration and optimal efficiency.
 
 **Version**: 2.0.0  
 **Last Updated**: 2025-10-18
