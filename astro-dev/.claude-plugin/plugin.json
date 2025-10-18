@@ -1,38 +1,50 @@
 {
   "name": "astro-dev",
-  "description": "Comprehensive Astro/Starlight development toolkit with skills, agents, and automated workflows",
-  "version": "1.0.0",
+  "description": "Intelligent Astro/Starlight development toolkit with orchestrator-based workflows, adaptive validation, and smart context loading",
+  "version": "2.0.0",
   "author": {
     "name": "rathremercurial.eth",
     "email": "rathermercurial@protonmail.com",
     "url": "https://github.com/rathermercurial"
   },
   "license": "CC0",
-  "tags": ["astro", "starlight", "development", "documentation", "superbenefit"],
+  "tags": ["astro", "starlight", "development", "documentation", "orchestration", "superbenefit"],
   "agents": {
+    "astro-orchestrator": {
+      "path": "agents/astro-orchestrator.md",
+      "description": "Intelligent task coordinator with adaptive planning and resource optimization"
+    },
+    "astro-developer": {
+      "path": "agents/astro-developer.md",
+      "description": "Primary code implementation specialist for Astro/Starlight projects"
+    },
     "astro-auditor": {
       "path": "agents/astro-auditor.md",
-      "description": "Code auditor for Astro/Starlight projects"
+      "description": "Adaptive code validator with configurable rigor levels (light/medium/comprehensive)"
     },
     "astro-architect": {
       "path": "agents/astro-architect.md",
-      "description": "Content architecture specialist for complex planning"
+      "description": "Content architecture specialist for complex system design and planning"
     }
   },
   "commands": {
-    "audit": "commands/audit.md",
+    "develop": "commands/develop.md",
     "implement": "commands/implement.md",
-    "docs-lookup": "commands/docs-lookup.md"
+    "architect": "commands/architect.md",
+    "audit": "commands/audit.md",
+    "lookup": "commands/lookup.md"
   },
   "hooks": "hooks/hooks.json",
   "skills": [
     {
-      "name": "astro-developer",
-      "path": "skills/astro-developer"
+      "name": "astro-coding",
+      "path": "skills/astro-coding",
+      "description": "Smart context provider for code implementation with selective pattern loading"
     },
     {
-      "name": "astro-docs",
-      "path": "skills/astro-docs"
+      "name": "astro-knowledge",
+      "path": "skills/astro-knowledge",
+      "description": "On-demand API documentation and reference lookup with MCP integration"
     }
   ]
 }
