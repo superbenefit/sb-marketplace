@@ -1,213 +1,303 @@
 ---
 name: audit
-description: Manually trigger comprehensive code audit
+description: Manual code audit with configurable rigor (light/medium/comprehensive/auto)
 ---
 
-# Audit Astro Code
+# /audit Command
 
-Performs a comprehensive audit of Astro/Starlight code with prioritized feedback.
+Direct validation via astro-auditor agent with adaptive rigor levels.
 
 ## Usage
 
 ```bash
-/audit [file-pattern]
+/audit [level] [files]
+/audit [files]  # Uses auto level detection
 ```
+
+## Audit Levels
+
+### Auto (Default)
+Let the auditor determine appropriate level based on:
+- File count and line changes
+- Critical areas touched (auth, security, payments)
+- Position in task series
+- Risk assessment
+
+### Light (~30 seconds, 5 checks)
+Quick validation for small changes:
+```bash
+/audit light src/components/Button.astro
+```
+**Checks**: Syntax, imports, module paths, breaking changes, basic TypeScript
+
+### Medium (~2 minutes, 20 checks)
+Standard validation for features:
+```bash
+/audit medium src/pages/blog/
+```
+**Checks**: All light checks + security, performance, best practices
+
+### Comprehensive (~5 minutes, 50+ checks)
+Full validation for complex work:
+```bash
+/audit comprehensive src/
+```
+**Checks**: All medium checks + architecture, accessibility, documentation, SEO
 
 ## Examples
 
+### Auto Level Detection
 ```bash
-# Audit all files
-/audit
+/audit src/components/Footer.astro
+# Small file → Light audit
 
-# Audit specific file
-/audit src/pages/blog/[slug].astro
+/audit src/pages/
+# Multiple files → Medium audit
 
-# Audit directory
-/audit src/components/
-
-# Audit by pattern
-/audit **/*.astro
+/audit src/pages/auth/
+# Auth-related → Comprehensive audit
 ```
 
-## Audit Scope
+### Explicit Level
+```bash
+# Force light for quick check
+/audit light src/components/*.astro
 
-The audit checks for:
+# Force comprehensive for critical areas
+/audit comprehensive src/lib/auth.ts
 
-### Priority 1: Build-Breaking Issues ❌
-Issues that will cause build failures:
-- Missing file extensions in imports
-- Wrong module prefixes (`astro/content` vs `astro:content`)
-- Invalid component structure (frontmatter fences)
-- Missing `getStaticPaths()` in dynamic routes
-- Malformed directives
+# Medium for standard work
+/audit medium src/pages/blog/[slug].astro
+```
 
-### Priority 2: Critical Issues ⚠️
-Security, performance, and common bugs:
-- **Security**: XSS risks, exposed secrets, unsafe HTML
-- **Performance**: Over-hydration, missing optimizations
-- **Common Bugs**: `className` vs `class`, param access errors, unsorted collections
+### Patterns
+```bash
+# All Astro components
+/audit **/*.astro
 
-### Priority 3: Best Practices 💡
-Code quality improvements:
-- TypeScript usage and type coverage
-- Error handling patterns
-- Accessibility (ARIA, semantic HTML)
-- Code organization and reusability
-- Documentation and comments
+# Specific directory
+/audit src/components/
 
-## Audit Report Structure
+# Multiple files
+/audit src/pages/index.astro src/layouts/Layout.astro
+```
 
+## Audit Level Details
+
+### Light Audit (5 Checks)
+**Use for**: Small fixes, quick validation, iterative work
+
+✓ Syntax validation
+✓ Import correctness (file extensions)
+✓ Module resolution (astro:content)
+✓ No build-breaking issues
+✓ Basic TypeScript validity
+
+**Output**: Brief pass/fail summary
+
+### Medium Audit (20 Checks)
+**Use for**: Standard features, most development work
+
+**Priority 1** (Build-Breaking):
+- Component structure
+- Import extensions
+- Module prefixes
+- Dynamic route requirements
+- Directive syntax
+
+**Priority 2** (Critical):
+- Security issues (XSS, exposed secrets)
+- Performance problems (over-hydration)
+- Common mistakes (className, await location)
+- Error handling
+- Basic accessibility
+
+**Output**: Structured report with fixes
+
+### Comprehensive Audit (50+ Checks)
+**Use for**: Large features, critical areas, refactoring, final validation
+
+**All Medium checks plus**:
+- Full security scan
+- Performance analysis (bundle size, optimization)
+- Architecture review
+- Complete accessibility audit
+- Documentation completeness
+- SEO compliance
+- i18n readiness
+- Dependency analysis
+
+**Output**: Detailed report with recommendations
+
+## Report Format
+
+### Light Audit Output
 ```markdown
-# Audit Report
+## Light Audit Results
+
+✅ Syntax valid
+✅ Imports correct
+✅ Module paths correct
+✅ No build-breaking issues
+✅ TypeScript basics pass
+
+Files reviewed: 1 | Issues: 0 | Time: 15s
+```
+
+### Medium/Comprehensive Output
+```markdown
+# Audit Report: Medium
 
 ## Summary
-- Files reviewed: 5
-- Critical issues: 2
-- Warnings: 4
-- Suggestions: 3
+- Audit Level: medium
+- Files reviewed: 3
+- Critical issues: 1
+- Warnings: 2
+- Suggestions: 0
 
-## Priority 1: Critical ❌
+## Priority 1: Build-Breaking ❌
 
-### Missing File Extension
-**File**: `src/pages/index.astro`
-**Line**: 2
-**Issue**: Import missing file extension
+**File**: `src/pages/blog/[slug].astro`
+**Line**: 5
+**Issue**: Missing file extension in import
 **Current**: `import Layout from '../layouts/Layout'`
 **Fix**: `import Layout from '../layouts/Layout.astro'`
 
 ## Priority 2: Important ⚠️
 
-### Over-Hydration
-**File**: `src/components/PostList.astro`
-**Line**: 15
-**Issue**: Static content using client:load
-**Current**: `<PostCard client:load post={post} />`
-**Recommendation**: Remove client directive or use client:visible
+**File**: `src/components/Hero.astro`
+**Line**: 12
+**Issue**: Using className instead of class
+**Fix**: Change `<div className="hero">` to `<div class="hero">`
 
-## Priority 3: Suggestions 💡
-
-### Accessibility Improvement
-**File**: `src/components/Nav.astro`
-**Suggestion**: Add ARIA labels
-**Recommendation**: Add `aria-label` to navigation links
-
-## ✅ Good Patterns Observed
-- Consistent TypeScript usage
-- Proper error handling
-- Good component organization
+## ✅ Good Patterns
+- Proper TypeScript typing
+- Good error handling
 ```
 
-## When to Use
+## When Each Level is Auto-Selected
 
-### Manual Audit
-- Before committing changes
-- After major refactoring
-- When debugging issues
-- Code review preparation
+```python
+auto_selection:
+  if lines < 20 and files == 1:
+    → light
+  elif is_last_in_series:
+    → comprehensive
+  elif "auth" or "security" or "payment" in description:
+    → comprehensive
+  elif files > 5 or lines > 100:
+    → comprehensive
+  else:
+    → medium
+```
 
-### Auto-Audit
-Auto-audit runs automatically after:
-- File edits (via hooks)
-- Component creation
-- Configuration changes
+## Comparison with /develop
 
-## Audit Process
+| Aspect | /audit | /develop |
+|--------|--------|----------|
+| **Focus** | Validation only | Full workflow |
+| **Output** | Audit report | Implementation + validation |
+| **When** | After changes | During development |
+| **Agent** | astro-auditor | orchestrator coordinates |
 
-1. **File Discovery**: Identifies files to audit
-2. **Priority 1 Scan**: Critical build-breaking issues
-3. **Priority 2 Scan**: Security and performance
-4. **Priority 3 Scan**: Best practices
-5. **Report Generation**: Structured feedback with fixes
+## Integration Examples
 
-## Integration with Tools
+### After /implement
+```bash
+/implement Create blog listing
+# ... implementation happens ...
+/audit medium src/pages/blog/  # Manual validation
+```
 
-### With astro-developer Skill
-After `/implement`, audit provides:
-- Verification of implementation
-- Common mistake detection
-- Best practice validation
+### Series Work
+```bash
+# Task 1
+/implement Add component A
+/audit light  # Quick check
 
-### With astro-auditor Agent
-For complex audits:
-- Run agent in background
-- Parallel audit processing
-- Detailed analysis reports
+# Task 2
+/implement Add component B
+/audit light  # Quick check
 
-### With Hooks
-Automatic auditing:
-- PostToolUse triggers
-- Non-blocking execution
-- Quick validation checks
+# Final
+/audit comprehensive src/components/  # Full validation
+```
 
-## Audit Configuration
+### Critical Areas
+```bash
+/implement Add authentication
+/audit comprehensive src/lib/auth.ts  # Always thorough for security
+```
 
-Audits check against:
-- `${CLAUDE_PLUGIN_ROOT}/knowledge-base/common-mistakes/`
-- `${CLAUDE_PLUGIN_ROOT}/knowledge-base/best-practices/`
-- `${CLAUDE_PLUGIN_ROOT}/knowledge-base/audit/`
+## Optimization Features
 
-## Common Issues Detected
+**Skip Redundant Checks**:
+- File audited <5 mins ago at same/higher level → Skip
+- No changes since last audit → Skip
+- Only whitespace changes → Skip
 
-### Import Issues
+**Batch Similar Issues**:
+- All import issues together
+- All accessibility issues together
+- All performance issues together
+
+**Prioritize Blockers**:
+- Build-breaking issues always shown first
+
+## Common Issues by Priority
+
+### Priority 1 (Build-Breaking)
 ```typescript
-// ❌ Missing extension
-import Layout from './Layout'
-// ✅ With extension
-import Layout from './Layout.astro'
+// Missing extensions
+import Layout from './Layout'  // ❌
+import Layout from './Layout.astro'  // ✅
 
-// ❌ Wrong prefix
-import { getCollection } from 'astro/content'
-// ✅ Correct prefix
-import { getCollection } from 'astro:content'
+// Wrong module prefix
+import { getCollection } from 'astro/content'  // ❌
+import { getCollection } from 'astro:content'  // ✅
 ```
 
-### Component Issues
+### Priority 2 (Critical)
 ```astro
-// ❌ Using className
-<div className="container">
-// ✅ Using class
-<div class="container">
+<!-- className vs class -->
+<div className="container">  <!-- ❌ -->
+<div class="container">  <!-- ✅ -->
 
-// ❌ Await in template
-<div>{await fetchData()}</div>
-// ✅ Fetch in frontmatter
+<!-- Async location -->
+<div>{await fetchData()}</div>  <!-- ❌ -->
 ---
-const data = await fetchData();
+const data = await fetchData();  // ✅
 ---
 <div>{data}</div>
 ```
 
-### Route Issues
-```typescript
-// ❌ Accessing params in getStaticPaths
-export async function getStaticPaths() {
-  const { slug } = Astro.params; // Error!
-}
-
-// ✅ Using params from props
-const { slug } = Astro.props;
-```
-
-## Quick Fixes
-
-The audit provides actionable fixes:
-- Exact code replacements
-- Line number references
-- Before/after examples
-- Explanation of why
-
-## Continuous Improvement
-
-Audit results help:
-- Update knowledge base
-- Identify common patterns
-- Improve team practices
-- Document solutions
+### Priority 3 (Suggestions)
+- Add TypeScript types
+- Improve error handling
+- Enhance accessibility
+- Add documentation
 
 ## Tips
 
-1. **Run Early**: Audit before issues compound
-2. **Fix Priority 1 First**: Build-breaking issues block progress
-3. **Learn Patterns**: Note repeated issues
-4. **Update Docs**: Document team-specific patterns
-5. **Automate**: Let hooks handle routine checks
+**Choose Right Level**:
+- Small change? Use light
+- Standard work? Let auto decide (usually medium)
+- Critical code? Force comprehensive
+
+**Fix in Order**:
+1. Priority 1 (blocks build)
+2. Priority 2 (causes bugs)
+3. Priority 3 (improves quality)
+
+**Learn Patterns**:
+- Note recurring issues
+- Update team practices
+- Document solutions
+
+## Version
+
+**Command Version**: 2.0 (Adaptive)
+**Compatible with**: astro-dev plugin v2.0+
+**Last Updated**: 2025-10-18
+
+Use `/audit` for intelligent, adaptive code validation.
