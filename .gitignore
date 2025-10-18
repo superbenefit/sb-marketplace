@@ -37,7 +37,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Claude settings (local user preferences)
-.claude/settings.local.json
+.claude/
 
 # Build outputs
 dist/
