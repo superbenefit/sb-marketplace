@@ -1,0 +1,38 @@
+{
+  "name": "astro-dev",
+  "description": "Comprehensive Astro/Starlight development toolkit with skills, agents, and automated workflows",
+  "version": "1.0.0",
+  "author": {
+    "name": "rathremercurial.eth",
+    "email": "rathermercurial@protonmail.com",
+    "url": "https://github.com/rathermercurial"
+  },
+  "license": "CC0",
+  "tags": ["astro", "starlight", "development", "documentation", "superbenefit"],
+  "agents": {
+    "astro-auditor": {
+      "path": "agents/astro-auditor.md",
+      "description": "Code auditor for Astro/Starlight projects"
+    },
+    "astro-architect": {
+      "path": "agents/astro-architect.md",
+      "description": "Content architecture specialist for complex planning"
+    }
+  },
+  "commands": {
+    "audit": "commands/audit.md",
+    "implement": "commands/implement.md",
+    "docs-lookup": "commands/docs-lookup.md"
+  },
+  "hooks": "hooks/hooks.json",
+  "skills": [
+    {
+      "name": "astro-developer",
+      "path": "skills/astro-developer"
+    },
+    {
+      "name": "astro-docs",
+      "path": "skills/astro-docs"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/audit-runner.sh",
+            "timeout": 30,
+            "description": "Auto-audit Astro files after changes"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'file=\"$1\"; [[ $file == *.astro || $file == *.ts || $file == *.tsx || $file == *.mjs ]] && echo \"🔍 Will audit after implementation\" || true' -- \"${CLAUDE_HOOK_DATA_TOOL_INPUT_FILE_PATH}\"",
+            "description": "Notify about upcoming audit for Astro files"
+          }
+        ]
+      }
+    ]
+  }
+}
