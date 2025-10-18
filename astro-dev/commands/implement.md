@@ -1,120 +1,142 @@
 ---
 name: implement
-description: Start Astro implementation with best practices loaded
+description: Direct implementation with astro-developer agent (bypasses orchestration)
 ---
 
-# Implement Astro Feature
+# /implement Command
 
-Initializes an implementation session with the astro-developer skill and best practices.
+Direct code implementation via the astro-developer agent.
 
 ## Usage
 
 ```
-/implement [feature-description]
+/implement [implementation request]
 ```
 
-## What This Does
+## Description
 
-1. Loads astro-developer skill context
-2. Reviews project structure
-3. Checks for similar patterns in codebase
-4. References best practices and common mistakes
-5. Enables audit hooks for automatic code review
-6. Starts implementation with full context
+The `/implement` command directly invokes the **astro-developer** agent for code implementation, bypassing the orchestrator. Use this when you want straightforward implementation without orchestration overhead.
+
+## What It Does
+
+1. Loads astro-coding skill with relevant patterns
+2. Implements requested code
+3. Performs self-review
+4. Returns implementation
+
+## When to Use
+
+Use `/implement` for:
+- **Direct implementation** without planning
+- **Quick changes** where orchestration isn't needed
+- **Specific code tasks** with clear requirements
+- **Bypassing orchestration** for speed
+
+Use `/develop` instead when you want:
+- Intelligent agent coordination
+- Automatic architecture planning for complex features
+- Adaptive audit level determination
 
 ## Examples
 
-```bash
-/implement Add a blog post listing page with pagination
-/implement Create a custom content collection for team members
-/implement Fix TypeScript errors in the Layout component
-/implement Add dark mode toggle to Starlight site
+### Component Creation
+```
+/implement Create a Card component with title, description, and image
 ```
 
-## Pre-Implementation Checklist
+### Route Implementation
+```
+/implement Add a dynamic route for blog posts with TypeScript types
+```
 
-Before implementing, the skill will:
-- ✅ Load syntax references from knowledge base
-- ✅ Review common mistakes to avoid
-- ✅ Check TypeScript configuration
-- ✅ Identify similar patterns in project
-- ✅ Enable post-implementation audit
+### Configuration
+```
+/implement Add Tailwind CSS integration to astro.config
+```
 
-## Implementation Workflow
-
-### Step 1: Analysis
-- Understand the feature requirements
-- Identify affected files and components
-- Check for existing patterns
-
-### Step 2: Planning
-- Design component structure
-- Plan data flow
-- Identify dependencies
-
-### Step 3: Implementation
-- Write code following best practices
-- Include proper TypeScript types
-- Add error handling
-- Implement accessibility features
-
-### Step 4: Validation
-- Auto-audit runs on save
-- Check for common mistakes
-- Verify TypeScript compliance
-- Test functionality
-
-## Options
-
-While this command doesn't accept flags directly, you can specify requirements in your feature description:
-
-```bash
-/implement Add blog pagination --with-typescript --strict-mode
-/implement Create contact form --with-validation --accessible
+### Bug Fixes
+```
+/implement Fix TypeScript errors in the Layout component
 ```
 
 ## What Gets Loaded
 
-### Syntax References
-- Component structure patterns
-- Directive usage
-- Import syntax
-- Routing patterns
+The astro-coding skill loads relevant patterns based on your request:
 
-### Best Practices
-- TypeScript patterns
-- Performance optimization
-- Security considerations
-- Accessibility guidelines
+- **Components**: Component patterns, TypeScript patterns
+- **Routes**: Routing patterns, TypeScript patterns
+- **Collections**: Collection patterns, schema patterns
+- **Config**: Configuration patterns
 
-### Common Mistakes
-- Import extension requirements
-- Module prefix corrections
-- Component syntax pitfalls
-- Hydration best practices
+Critical rules always loaded:
+- File extensions in imports
+- Correct module prefixes (astro:content)
+- Class vs className
+- Async operation location
+- Environment variable security
 
-## Integration
+## Output
 
-- **Auto-Audit**: Code is automatically audited after changes
-- **Docs Lookup**: Use `/docs-lookup` for API verification
-- **Architecture**: Complex features can invoke @astro-architect
-- **Error Fixes**: Automatic suggestions for common errors
+Direct implementation result:
+```markdown
+## Implementation Complete
+
+### Files Modified/Created
+- src/components/Card.astro (created)
+- src/pages/blog/[slug].astro (modified)
+
+### Changes Made
+[Description of implementation]
+
+### Self-Review
+✅ All imports have extensions
+✅ TypeScript types defined
+✅ Patterns followed
+✅ No critical issues
+
+Ready for use.
+```
+
+## Comparison with Other Commands
+
+| Command | Agent(s) | Planning | Audit | Use Case |
+|---------|----------|----------|-------|----------|
+| **/implement** | developer only | No | No | Direct implementation |
+| **/develop** | orchestrator coordinates | Yes | Adaptive | Full workflow |
+| **/architect** | architect only | Yes | No | Design only |
+
+## Tips
+
+### Be Specific
+```
+❌ /implement Make a blog
+✅ /implement Create a blog collection schema with title, date, and tags
+```
+
+### Mention Requirements
+```
+✅ /implement Add footer component (must match existing header style)
+✅ /implement Create API endpoint (with error handling)
+```
+
+### Reference Existing Code
+```
+✅ /implement Add pagination to blog listing (like the docs pagination)
+```
 
 ## After Implementation
 
-1. **Auto-Audit Runs**: Checks for issues automatically
-2. **Review Report**: See any warnings or suggestions
-3. **Fix Issues**: Address any critical problems
-4. **Test**: Verify functionality works as expected
-
-## Tips for Best Results
-
-1. **Be Specific**: Include details about what you want to implement
-2. **Mention Context**: Reference existing files or patterns
-3. **State Requirements**: TypeScript, accessibility, performance needs
-4. **Ask Questions**: If unsure about approach, ask before implementing
-
-## Example Session
-
+Manually validate if needed:
 ```
-User: /implement Create a dynamic route for blog posts with proper TypeScript types
+/audit [files]  # Optional manual validation
+```
+
+Or test directly and fix issues as they arise.
+
+## Version
+
+**Command Version**: 2.0
+**Compatible with**: astro-dev plugin v2.0+
+**Last Updated**: 2025-10-18
+
+Use `/implement` for direct, no-frills code implementation.
