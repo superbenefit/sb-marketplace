@@ -2,6 +2,8 @@
 
 Local Claude Code plugin marketplace for Astro and Starlight development tools.
 
+> **For Claude Code**: See [`claude.md`](./claude.md) for comprehensive repository context, architecture details, and quick reference. This file provides complete codebase understanding to reduce startup time and token usage.
+
 ## Overview
 
 This repository contains a plugin marketplace for Claude Code, featuring the **astro-dev v2.0** plugin - a toolkit for Astro and Starlight development.
@@ -185,14 +187,19 @@ This plugin is maintained by the SuperBenefit community. Contributions are welco
 - Refine orchestration logic
 - Add specialized agents
 
-## Architecture
+## Documentation
 
-See [ARCHITECTURE_SPEC.md](ARCHITECTURE_SPEC.md) for complete v2.0 specification.
+### For Users
+- **[README.md](./README.md)** (this file) - Quick start and usage guide
+- **[astro-dev/README.md](./astro-dev/README.md)** - Detailed plugin documentation
 
-Key documents:
-- `ARCHITECTURE_SPEC.md` - Complete system design
-- `IMPLEMENTATION_STATUS.md` - Implementation progress
-- `KNOWLEDGE_BASE_CONSOLIDATION.md` - KB optimization details
+### For Claude Code
+- **[claude.md](./claude.md)** - Comprehensive repository context (recommended for AI assistants)
+
+### For Developers
+- **[ARCHITECTURE_SPEC.md](./ARCHITECTURE_SPEC.md)** - Complete v2.0 system design
+- **[IMPLEMENTATION_STATUS.md](./IMPLEMENTATION_STATUS.md)** - Implementation progress
+- **[KNOWLEDGE_BASE_CONSOLIDATION.md](./KNOWLEDGE_BASE_CONSOLIDATION.md)** - KB optimization details
 
 ## License
 
