@@ -55,9 +55,9 @@ if command -v jq &> /dev/null; then
     echo "✨ Using jq for settings update"
 
     jq --arg path "$REL_PATH" '
-        .extraKnownMarketplaces.\"sb-marketplace\".source.source = "local" |
-        .extraKnownMarketplaces.\"sb-marketplace\".source.path = $path |
-        .enabledPlugins.\"astro-dev@sb-marketplace\" = true
+        .extraKnownMarketplaces."sb-marketplace".source.source = "local" |
+        .extraKnownMarketplaces."sb-marketplace".source.path = $path |
+        .enabledPlugins."astro-dev@sb-marketplace" = true
     ' "$SETTINGS_FILE" > "$SETTINGS_FILE.tmp" && mv "$SETTINGS_FILE.tmp" "$SETTINGS_FILE"
 
     echo "✅ Settings updated successfully"
@@ -66,7 +66,7 @@ else
     echo ""
     echo "Please add the following to $SETTINGS_FILE:"
     echo ""
-    cat << EOF
+    cat << INNER_EOF
 {
   "extraKnownMarketplaces": {
     "sb-marketplace": {
@@ -80,43 +80,40 @@ else
     "astro-dev@sb-marketplace": true
   }
 }
-EOF
+INNER_EOF
     echo ""
 fi
-
-# Make audit script executable
-chmod +x "$MARKETPLACE_DIR/astro-dev/scripts/audit-runner.sh"
-echo "🔧 Made audit-runner.sh executable"
 
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "✨ Setup Complete!"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
-echo "The Astro Dev plugin is now ready to use!"
+echo "The Astro Dev plugin (v2.0) is now ready to use!"
 echo ""
-echo "📦 Plugin: astro-dev@sb-marketplace"
+echo "📦 Plugin: astro-dev@sb-marketplace v2.0.0"
 echo "📚 Components:"
-echo "   • Skills: astro-developer, astro-docs"
-echo "   • Agents: astro-auditor, astro-architect"
-echo "   • Commands: /implement, /audit, /docs-lookup"
-echo "   • Hooks: Auto-audit on save"
+echo "   • Agents: astro-orchestrator, astro-developer, astro-auditor, astro-architect"
+echo "   • Skills: astro-coding, astro-knowledge"
+echo "   • Commands: /develop, /implement, /architect, /audit, /lookup"
 echo ""
 echo "🎯 Quick Start:"
-echo "   /implement Add a blog listing page"
-echo "   /audit src/pages/"
-echo "   /docs-lookup getStaticPaths"
+echo "   /develop Add a blog with categories and pagination"
+echo "   /implement Create a Card component"
+echo "   /architect Design a multi-language docs system"
+echo "   /audit auto src/pages/"
+echo "   /lookup getStaticPaths"
 echo ""
 echo "📖 Documentation:"
 echo "   README.md - Marketplace overview"
 echo "   astro-dev/README.md - Plugin documentation"
-echo "   astro-dev/CHANGELOG.md - Version history"
+echo "   ARCHITECTURE_SPEC.md - v2.0 system design"
 echo ""
 echo "💡 Tips:"
-echo "   • Skills load automatically when needed"
-echo "   • Use /implement for guided development"
-echo "   • Run /audit before committing"
-echo "   • Use /docs-lookup for quick API reference"
+echo "   • Use /develop for most tasks (orchestrated workflow)"
+echo "   • Use /implement for simple, direct changes"
+echo "   • Audit levels adapt automatically (light/medium/comprehensive)"
+echo "   • Skills load selectively to optimize token usage"
 echo ""
 
 if [ -f "$SETTINGS_FILE.backup."* ]; then
