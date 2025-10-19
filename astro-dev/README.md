@@ -347,7 +347,7 @@ astro-dev/
 
 ## Version
 
-Current version: 1.0.0
+Current version: 2.0.0
 
 See CHANGELOG.md for version history and updates.
 

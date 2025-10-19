@@ -11,7 +11,7 @@
       "name": "astro-dev",
       "source": "./astro-dev",
       "description": "Complete Astro/Starlight development toolkit with skills, agents, and automated workflows",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "author": {
         "name": "rathermercurial.eth",
         "email": "rathermercurial@protonmail.com"
