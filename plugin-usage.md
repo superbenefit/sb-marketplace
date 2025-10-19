@@ -23,7 +23,7 @@ Attempted to use the astro-dev plugin (v2.0) from sb-marketplace to architect a 
   "extraKnownMarketplaces": {
     "sb-marketplace": {
       "source": {
-        "source": "local",
+        "source": "directory",
         "path": "F:/projects/sb-marketplace"
       }
     }

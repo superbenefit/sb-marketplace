@@ -27,7 +27,7 @@ This repository contains a plugin marketplace for Claude Code, featuring the **a
      "extraKnownMarketplaces": {
        "sb-marketplace": {
          "source": {
-           "source": "local",
+           "source": "directory",
            "path": "./.claude/sb-marketplace"
          }
        }

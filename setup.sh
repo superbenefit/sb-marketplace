@@ -55,7 +55,7 @@ if command -v jq &> /dev/null; then
     echo "✨ Using jq for settings update"
 
     jq --arg path "$REL_PATH" '
-        .extraKnownMarketplaces."sb-marketplace".source.source = "local" |
+        .extraKnownMarketplaces."sb-marketplace".source.source = "directory" |
         .extraKnownMarketplaces."sb-marketplace".source.path = $path |
         .enabledPlugins."astro-dev@sb-marketplace" = true
     ' "$SETTINGS_FILE" > "$SETTINGS_FILE.tmp" && mv "$SETTINGS_FILE.tmp" "$SETTINGS_FILE"
@@ -71,7 +71,7 @@ else
   "extraKnownMarketplaces": {
     "sb-marketplace": {
       "source": {
-        "source": "local",
+        "source": "directory",
         "path": "$REL_PATH"
       }
     }
