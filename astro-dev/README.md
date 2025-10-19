@@ -6,6 +6,62 @@ Comprehensive Astro and Starlight development toolkit for Claude Code.
 
 This plugin provides expert assistance for Astro and Starlight development through skills, agents, commands, and automated workflows.
 
+```md
+## Astro Dev Toolkit (astro-dev v2.0)
+
+### Commands
+
+- `/develop [task]` - Orchestrated workflow with task analysis and agent coordination
+- `/implement [task]` - Direct implementation bypassing orchestration
+- `/architect [design]` - Architecture planning without implementation
+- `/audit [level] [path]` - Code validation (auto/light/medium/comprehensive)
+- `/lookup [api]` - Quick API reference and documentation
+
+### Skills
+
+- `astro-coding` - Coding patterns and best practices (loaded on-demand)
+- `astro-knowledge` - API documentation and reference lookup
+
+### Critical Astro Rules
+
+**Always**:
+- Include file extensions: `import Layout from './Layout.astro'`
+- Use `astro:content` (not `astro/content`)
+- Use `class` (not `className`) in .astro components
+- Type Props interfaces
+- Fetch data in frontmatter, not templates
+
+**Never**:
+- Access `Astro.params` inside `getStaticPaths()`
+- Use `await` in template sections
+- Expose secrets to client code
+- Use `className` in Astro components
+
+### Testing Functionality
+
+- # Test orchestrator
+  - /develop Create a simple contact form component
+
+- # Test direct implementation
+  - /implement Add a Header component with navigation
+
+- # Test architecture planning
+  - /architect Design a blog with categories and tags
+
+- # Test validation
+  - /audit auto src/components/
+
+- # Test API lookup
+  - /lookup getCollection
+
+### Workflow
+
+1. Use `/develop` for most tasks - orchestrator determines best approach
+2. Use `/implement` for simple, straightforward changes
+3. Use `/architect` when planning complex systems
+4. Validation happens automatically with adaptive rigors
+```
+
 ## Components
 
 ### Skills

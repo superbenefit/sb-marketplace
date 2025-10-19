@@ -114,6 +114,7 @@ Choose validation rigor based on task complexity.
 
 Quick documentation lookup with syntax and examples.
 
+
 ## Features
 
 ### v2.0 Architecture
