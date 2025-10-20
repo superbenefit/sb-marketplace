@@ -252,7 +252,10 @@ Currently empty; reserved for automated workflows (PostToolUse, PreToolUse)
 
 ### Installation (GitHub-based)
 
-1. **Add to your `.claude/settings.json`**:
+1. **Edit settings file**:
+   - Global: `~/.claude/settings.json`
+   - Single project: `<project>/.claude/settings.local.json`
+
    ```json
    {
      "extraKnownMarketplaces": {
@@ -276,7 +279,7 @@ Currently empty; reserved for automated workflows (PostToolUse, PreToolUse)
    /develop Add a blog with categories and pagination
    ```
 
-That's it! Claude Code handles all downloads and updates automatically.
+Claude Code handles all downloads and updates automatically.
 
 ## Git Status
 
@@ -463,7 +466,7 @@ This work is dedicated to the public domain. You can copy, modify, distribute an
 - Agents: `astro-dev/agents/`
 - Commands: `astro-dev/commands/`
 
-**Installation**: Add GitHub source to `.claude/settings.json`:
+**Installation**: Add to settings (global: `~/.claude/settings.json` or project: `<project>/.claude/settings.local.json`):
 ```json
 {
   "extraKnownMarketplaces": {

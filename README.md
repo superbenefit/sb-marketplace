@@ -12,26 +12,27 @@ This repository is a plugin marketplace for Claude Code, featuring the **astro-d
 
 ### Installation
 
-1. **Add to your Claude Code settings** by editing `.claude/settings.json`:
-   ```json
-   {
-     "extraKnownMarketplaces": {
-       "sb-marketplace": {
-         "source": {
-           "source": "github",
-           "repo": "superbenefit/sb-marketplace"
-         }
-       }
-     },
-     "enabledPlugins": {
-       "astro-dev@sb-marketplace": true
-     }
-   }
-   ```
+**For global installation** (all projects), edit `~/.claude/settings.json`:
 
-2. **Restart Claude Code** - The plugin will be automatically downloaded and enabled.
+**For single project**, edit `<project>/.claude/settings.local.json`:
 
-That's it! The plugin is now ready to use.
+```json
+{
+  "extraKnownMarketplaces": {
+    "sb-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "superbenefit/sb-marketplace"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "astro-dev@sb-marketplace": true
+  }
+}
+```
+
+Then restart Claude Code. The plugin will be automatically downloaded and enabled.
 
 ## What's Included
 
