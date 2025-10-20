@@ -6,7 +6,7 @@ Local Claude Code plugin marketplace for Astro and Starlight development tools.
 
 ## Overview
 
-This repository contains a plugin marketplace for Claude Code, featuring the **astro-dev v2.0** plugin - a toolkit for Astro and Starlight development.
+This repository contains a plugin marketplace for Claude Code, featuring the **astro-dev v0.2** plugin - a toolkit for Astro and Starlight development.
 
 ## Quick Start
 
@@ -218,5 +218,5 @@ For issues, questions, or contributions:
 
 Created by rathremercurial.eth for the SuperBenefit community.
 
-**Version**: 2.0.0  
-**Last Updated**: 2025-10-18
+**Version**: 0.2.0  
+**Last Updated**: 2025-10-19

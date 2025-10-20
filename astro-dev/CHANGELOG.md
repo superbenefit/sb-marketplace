@@ -5,7 +5,63 @@ All notable changes to the Astro Dev plugin will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2025-10-18
+## [0.2.0] - 2025-10-18
+
+### Added
+
+#### Agents
+- **astro-orchestrator**: Intelligent task coordinator with complexity analysis
+  - Agent coordination and parallel execution
+  - Audit rigor calibration (auto/light/medium/comprehensive)
+  - Token optimization via selective loading
+  - Task analysis and execution planning
+
+#### Commands
+- **/develop**: Orchestrated workflow (primary command for 90% of tasks)
+- **/architect**: Architecture planning without implementation
+- Adaptive **/audit** levels: auto, light, medium, comprehensive
+
+#### Features
+- Progressive disclosure pattern for knowledge loading
+- Knowledge base consolidation (17 files → 5 files, ~50% token reduction)
+- Parallel agent execution when beneficial
+- Selective pattern loading based on task keywords
+- 3-priority validation system (P1: Breaking, P2: Security, P3: Best practices)
+
+### Changed
+
+#### Breaking Changes
+- **/docs-lookup** command renamed to **/lookup**
+- **astro-developer** skill renamed to **astro-coding**
+- **astro-docs** skill renamed to **astro-knowledge**
+- Auto-audit hooks removed (manual `/audit` preferred for user control)
+
+#### Skills Reorganization
+- **astro-coding**: Implementation patterns with selective loading
+- **astro-knowledge**: API documentation and reference lookup
+
+#### Knowledge Base
+- Consolidated into 5 core files (~1500 lines total):
+  - `error-catalog.md` - Indexed by symptom
+  - `astro-patterns.md` - Components, routing, collections
+  - `starlight-guide.md` - Starlight-specific features
+  - `integrations.md` - Loaders, external data, TypeScript
+  - `content-knowledge/` - Detailed references
+
+### Improved
+- Token usage reduced by ~50% through consolidation
+- Task complexity analysis algorithm
+- Rigor calibration for appropriate validation depth
+- Documentation organization and clarity
+
+### Removed
+- Redundant knowledge base files (17 → 5)
+- Auto-audit hooks (replaced with explicit `/audit` command)
+- Broken components (Phase 4a cleanup)
+
+---
+
+## [0.1.0] - 2025-10-18 (Internal Development Version)
 
 ### Added
 
@@ -88,28 +144,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Release Notes
 
-### Version 1.0.0 - Initial Release
+### Version 0.2.0 - Orchestration Architecture
 
-This is the first complete release of the Astro Dev plugin for Claude Code. It provides a comprehensive toolkit for Astro and Starlight development with:
+Initial development release introducing orchestration-based architecture with intelligent task coordination.
 
-- **Skills** for frequently-used capabilities
-- **Agents** for complex parallel tasks
-- **Commands** for quick access
-- **Hooks** for automated workflows
-- **Knowledge Base** for progressive disclosure
+**Key Improvements**:
+- Orchestrator-driven workflows with automatic task analysis
+- Adaptive validation rigor based on task complexity
+- Consolidated knowledge base with selective loading
+- Parallel agent execution when beneficial
 
-The plugin follows the Claude Code plugin architecture specification with optimized context usage through progressive loading.
+**Note**: This is an initial development version (v0.x). Breaking changes may occur frequently as the plugin evolves toward v1.0 stability.
 
-### Installation
+**Migration from v0.1.0**:
+- Replace `/docs-lookup` with `/lookup`
+- Use `/develop` as primary command (replaces direct `/implement` for most tasks)
+- Invoke `astro-coding` skill instead of `astro-developer`
+- Invoke `astro-knowledge` skill instead of `astro-docs`
+- Use explicit `/audit` command (auto-hooks removed)
 
-See README.md for installation instructions.
+### Version 0.1.0 - Initial Implementation
+
+Internal development version with basic agent system and comprehensive knowledge base.
 
 ### Compatibility
 
-- Claude Code: Latest version
-- Astro: v4.x and later
-- Starlight: v0.21.x and later
+- **Claude Code**: Latest version
+- **Astro**: v4.x and later
+- **Starlight**: v0.21.x and later
 
-### Future Roadmap
+### Links
 
-See README.md for planned enhancements.
+- [Architecture Specification](../ARCHITECTURE_SPEC.md)
+- [Implementation Status](../IMPLEMENTATION_STATUS.md)
+- [Knowledge Base Consolidation](../KNOWLEDGE_BASE_CONSOLIDATION.md)
+- [Root Changelog](../CHANGELOG.md)
+
+---
+
+**License**: CC0 1.0 Universal - Public Domain Dedication
+**Author**: rathremercurial.eth
+**Community**: SuperBenefit

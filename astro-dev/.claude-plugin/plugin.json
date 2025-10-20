@@ -1,14 +1,21 @@
 {
   "name": "astro-dev",
   "description": "Astro/Starlight development toolkit with orchestrator-based workflows and configurable validation",
-  "version": "2.0.0",
+  "version": "0.2.0",
   "author": {
     "name": "rathremercurial.eth",
     "email": "rathermercurial@protonmail.com",
     "url": "https://github.com/rathermercurial"
   },
   "license": "CC0",
-  "tags": ["astro", "starlight", "development", "documentation", "orchestration", "superbenefit"],
+  "tags": [
+    "astro",
+    "starlight",
+    "development",
+    "documentation",
+    "orchestration",
+    "superbenefit"
+  ],
   "agents": {
     "astro-orchestrator": {
       "path": "agents/astro-orchestrator.md",

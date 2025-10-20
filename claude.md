@@ -1,17 +1,17 @@
 # sb-marketplace: Claude Code Context
 
-**Quick Reference**: This is the Astro Dev Marketplace - a local plugin marketplace for Claude Code providing a comprehensive Astro/Starlight development toolkit (v2.0.0).
+**Quick Reference**: This is the Astro Dev Marketplace - a local plugin marketplace for Claude Code providing a comprehensive Astro/Starlight development toolkit (v0.2.0).
 
 ## Project Identity
 
 - **Name**: sb-marketplace (Astro Dev Marketplace)
-- **Version**: 2.0.0 (Marketplace: 1.0.0)
+- **Version**: 0.2.0 (Marketplace: 0.2.0)
 - **Type**: Claude Code Plugin Marketplace
-- **Status**: Production-ready (stable)
+- **Status**: Initial Development
 - **License**: CC0 1.0 Universal (Public Domain)
 - **Author**: rathremercurial.eth
 - **Community**: SuperBenefit
-- **Last Updated**: 2025-10-18
+- **Last Updated**: 2025-10-19
 
 ## Architecture at a Glance
 
@@ -235,7 +235,7 @@ These 5 rules are enforced by all agents and must NEVER be violated:
 ## Configuration Files
 
 ### 1. Plugin Manifest (`astro-dev/.claude-plugin/plugin.json`)
-Defines plugin metadata, agents, commands, skills, and hooks. Current version: 2.0.0
+Defines plugin metadata, agents, commands, skills, and hooks. Current version: 0.2.0
 
 ### 2. Marketplace Manifest (`.claude-plugin/marketplace.json`)
 Registers plugins in the marketplace. Source type: `directory`, points to `./astro-dev`
@@ -291,13 +291,19 @@ Add to `.claude/settings.json`:
 ## Git Status
 
 **Current Branch**: `main`
-**Status**: Clean (no uncommitted changes)
+**Status**: Modified (marketplace name fix, documentation updates)
 **Recent Commits**:
+- `678f45a`: Add comprehensive claude.md context file and update README
 - `599851a`: Fix marketplace source type from 'local' to 'directory'
 - `0955540`: Fix plugin version inconsistencies and document usage issues
 - `553af3a`: Update setup.sh to reflect v2.0 architecture
 - `02c6b7e`: Add claude.md snippet to READMEs
-- `0f65f4b`: Add .claude/ to .gitignore
+
+**Pending Changes**:
+- Marketplace manifest: Name corrected to "sb-marketplace" (was "astro-dev-marketplace")
+- Root CHANGELOG.md created with complete version history
+- Plugin CHANGELOG.md updated to reflect v2.0.0
+- claude.md updated with latest information
 
 ## Version History
 
@@ -445,4 +451,4 @@ This work is dedicated to the public domain. You can copy, modify, distribute an
 - Agents: `F:/projects/sb-marketplace/astro-dev/agents/`
 - Commands: `F:/projects/sb-marketplace/astro-dev/commands/`
 
-**Version**: 2.0.0 | **Status**: Stable | **Updated**: 2025-10-18
+**Version**: 0.2.0 | **Status**: Initial Development | **Updated**: 2025-10-19

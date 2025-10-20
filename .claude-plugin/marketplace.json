@@ -1,7 +1,7 @@
 {
-  "name": "astro-dev-marketplace",
-  "description": "Local development marketplace for Astro/Starlight development tools",
-  "version": "1.0.0",
+  "name": "sb-marketplace",
+  "description": "SuperBenefit local plugin marketplace for Claude Code",
+  "version": "0.2.0",
   "owner": {
     "name": "SuperBenefit Community",
     "email": "info@superbenefit.org"
@@ -11,12 +11,17 @@
       "name": "astro-dev",
       "source": "./astro-dev",
       "description": "Complete Astro/Starlight development toolkit with skills, agents, and automated workflows",
-      "version": "2.0.0",
+      "version": "0.2.0",
       "author": {
         "name": "rathermercurial.eth",
         "email": "rathermercurial@protonmail.com"
       },
-      "tags": ["development", "astro", "starlight", "documentation"],
+      "tags": [
+        "development",
+        "astro",
+        "starlight",
+        "documentation"
+      ],
       "category": "development"
     }
   ]
