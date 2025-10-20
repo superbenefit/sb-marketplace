@@ -7,12 +7,61 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Fixed
-- Marketplace manifest name corrected from "astro-dev-marketplace" to "sb-marketplace"
-- Marketplace description updated to accurately reflect general-purpose nature
+## [0.3.0] - 2025-10-20
+
+### Breaking Changes
+- **Transitioned to GitHub-based plugin loading** - Directory-based installation no longer supported
+- Removed `setup.sh` installation script
+- Installation now requires GitHub source in settings.json
 
 ### Changed
-- setup.sh: Added claude.md and CHANGELOG.md references
+- Plugin now loads from GitHub repository: `superbenefit/sb-marketplace`
+- Installation simplified to 2 steps: add to settings.json and restart Claude Code
+- Documentation completely rewritten for GitHub-based workflow
+- Marketplace description updated to be more descriptive
+
+### Added
+- Repository field in plugin.json pointing to GitHub repo
+- CONTRIBUTING.md with community contribution guidelines
+- Root-level LICENSE file (CC0 1.0 Universal)
+
+### Removed
+- `setup.sh` script (obsolete with GitHub loading)
+- All directory-based installation documentation
+- References to local/project-local installation methods
+
+### Migration Guide
+**For existing users**: Update your `.claude/settings.json`:
+
+Replace:
+```json
+{
+  "extraKnownMarketplaces": {
+    "sb-marketplace": {
+      "source": {
+        "source": "directory",
+        "path": "./.claude/sb-marketplace"
+      }
+    }
+  }
+}
+```
+
+With:
+```json
+{
+  "extraKnownMarketplaces": {
+    "sb-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "superbenefit/sb-marketplace"
+      }
+    }
+  }
+}
+```
+
+Then restart Claude Code.
 
 ## [0.2.0] - 2025-10-19
 

@@ -1,36 +1,25 @@
 # Astro Dev Marketplace
 
-Local Claude Code plugin marketplace for Astro and Starlight development tools.
+Claude Code plugin marketplace for Astro and Starlight development - hosted on GitHub for easy installation.
 
 > **For Claude Code**: See [`claude.md`](./claude.md) for comprehensive repository context, architecture details, and quick reference. This file provides complete codebase understanding to reduce startup time and token usage.
 
 ## Overview
 
-This repository contains a plugin marketplace for Claude Code, featuring the **astro-dev v0.2** plugin - a toolkit for Astro and Starlight development.
+This repository is a plugin marketplace for Claude Code, featuring the **astro-dev v0.3** plugin - a comprehensive toolkit for Astro and Starlight development with intelligent orchestration, specialized agents, and extensive knowledge base.
 
 ## Quick Start
 
 ### Installation
 
-1. **Clone this repository** (or add as submodule to your project):
-   ```bash
-   git clone <repository-url> .claude/sb-marketplace
-   ```
-
-2. **Run the setup script**:
-   ```bash
-   cd .claude/sb-marketplace
-   bash setup.sh
-   ```
-
-3. **Enable the plugin** in your project's `.claude/settings.json`:
+1. **Add to your Claude Code settings** by editing `.claude/settings.json`:
    ```json
    {
      "extraKnownMarketplaces": {
        "sb-marketplace": {
          "source": {
-           "source": "directory",
-           "path": "./.claude/sb-marketplace"
+           "source": "github",
+           "repo": "superbenefit/sb-marketplace"
          }
        }
      },
@@ -40,11 +29,13 @@ This repository contains a plugin marketplace for Claude Code, featuring the **a
    }
    ```
 
-4. **Start using** the plugin in Claude Code!
+2. **Restart Claude Code** - The plugin will be automatically downloaded and enabled.
+
+That's it! The plugin is now ready to use.
 
 ## What's Included
 
-### Astro Dev Plugin (v2.0.0)
+### Astro Dev Plugin (v0.3.0)
 
 A toolkit for Astro and Starlight development with orchestrator-based workflows.
 
@@ -145,29 +136,48 @@ Quick documentation lookup with syntax and examples.
 ## Requirements
 
 - Claude Code (latest version)
-- Git (for installation)
-- Bash (for setup script)
 - Astro v4.x or later (for target projects)
 - Starlight v0.21.x or later (for Starlight projects)
 
-## Migration from v1.0
+## Migration from v0.2.0
 
-### Breaking Changes
-- `/docs-lookup` renamed to `/lookup`
-- `astro-developer` skill renamed to `astro-coding`
-- `astro-docs` skill renamed to `astro-knowledge`
-- Auto-audit hooks removed
+### Breaking Changes in v0.3.0
+- **Installation method changed**: Now uses GitHub source instead of directory
+- `setup.sh` removed - no longer needed with GitHub loading
+- Must update settings.json to use GitHub source
 
-### New Features
-- `/develop` command for orchestrated workflows
-- `/architect` command for planning
-- Configurable audit levels
-- Consolidated knowledge base
+### Migration Steps
+If you're upgrading from v0.2.0, update your `.claude/settings.json`:
 
-### Backward Compatibility
-- `/implement` and `/audit` commands still work
-- Knowledge base content preserved
-- All patterns and references maintained
+**Old (v0.2.0)**:
+```json
+{
+  "extraKnownMarketplaces": {
+    "sb-marketplace": {
+      "source": {
+        "source": "directory",
+        "path": "./.claude/sb-marketplace"
+      }
+    }
+  }
+}
+```
+
+**New (v0.3.0)**:
+```json
+{
+  "extraKnownMarketplaces": {
+    "sb-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "superbenefit/sb-marketplace"
+      }
+    }
+  }
+}
+```
+
+Then restart Claude Code. The plugin functionality remains unchanged.
 
 ## Contributing
 
@@ -218,5 +228,6 @@ For issues, questions, or contributions:
 
 Created by rathremercurial.eth for the SuperBenefit community.
 
-**Version**: 0.2.0  
-**Last Updated**: 2025-10-19
+**Version**: 0.3.0
+**Last Updated**: 2025-10-20
+**Repository**: https://github.com/superbenefit/sb-marketplace

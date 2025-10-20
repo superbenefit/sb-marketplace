@@ -1,17 +1,18 @@
 # sb-marketplace: Claude Code Context
 
-**Quick Reference**: This is the Astro Dev Marketplace - a local plugin marketplace for Claude Code providing a comprehensive Astro/Starlight development toolkit (v0.2.0).
+**Quick Reference**: This is the Astro Dev Marketplace - a GitHub-hosted plugin marketplace for Claude Code providing a comprehensive Astro/Starlight development toolkit (v0.3.0).
 
 ## Project Identity
 
 - **Name**: sb-marketplace (Astro Dev Marketplace)
-- **Version**: 0.2.0 (Marketplace: 0.2.0)
+- **Version**: 0.3.0 (Marketplace: 0.3.0, Plugin: 0.3.0)
 - **Type**: Claude Code Plugin Marketplace
-- **Status**: Initial Development
+- **Repository**: https://github.com/superbenefit/sb-marketplace
+- **Status**: Production Ready
 - **License**: CC0 1.0 Universal (Public Domain)
 - **Author**: rathremercurial.eth
 - **Community**: SuperBenefit
-- **Last Updated**: 2025-10-19
+- **Last Updated**: 2025-10-20
 
 ## Architecture at a Glance
 
@@ -57,11 +58,10 @@ Knowledge Base (5 consolidated files, ~1500 lines)
 ## Directory Structure
 
 ```
-F:/projects/sb-marketplace/
+sb-marketplace/                    # GitHub repository root
 ├── .claude-plugin/
 │   └── marketplace.json          # Marketplace manifest (plugin registry)
-├── .claude/                      # Claude Code local settings (gitignored)
-├── astro-dev/                    # Main plugin directory (v2.0.0)
+├── astro-dev/                    # Main plugin directory (v0.3.0)
 │   ├── .claude-plugin/
 │   │   └── plugin.json           # Plugin manifest
 │   ├── .mcp.json                 # MCP server config (astro-docs)
@@ -100,7 +100,9 @@ F:/projects/sb-marketplace/
 │   ├── README.md                 # Detailed plugin documentation
 │   ├── CHANGELOG.md              # Version history
 │   └── LICENSE                   # CC0 dedication
-├── setup.sh                      # Installation & configuration script
+├── CONTRIBUTING.md               # Contribution guidelines
+├── CHANGELOG.md                  # Marketplace version history
+├── LICENSE                       # CC0 dedication
 ├── plugin-usage.md               # Troubleshooting & known issues
 ├── README.md                     # Marketplace overview & quick start
 ├── claude.md                     # This file - primary context document
@@ -235,10 +237,10 @@ These 5 rules are enforced by all agents and must NEVER be violated:
 ## Configuration Files
 
 ### 1. Plugin Manifest (`astro-dev/.claude-plugin/plugin.json`)
-Defines plugin metadata, agents, commands, skills, and hooks. Current version: 0.2.0
+Defines plugin metadata, agents, commands, skills, and hooks. Current version: 0.3.0
 
 ### 2. Marketplace Manifest (`.claude-plugin/marketplace.json`)
-Registers plugins in the marketplace. Source type: `directory`, points to `./astro-dev`
+Registers plugins in the marketplace. Points to `./astro-dev` (relative path works with GitHub)
 
 ### 3. MCP Configuration (`astro-dev/.mcp.json`)
 Connects to astro-docs MCP server for real-time API documentation
@@ -246,69 +248,79 @@ Connects to astro-docs MCP server for real-time API documentation
 ### 4. Hooks Configuration (`astro-dev/hooks/hooks.json`)
 Currently empty; reserved for automated workflows (PostToolUse, PreToolUse)
 
-### 5. Setup Script (`setup.sh`)
-- Auto-detects marketplace location (project-local vs global)
-- Configures Claude Code settings with backups
-- Uses `jq` for JSON updates (manual fallback available)
-- Displays v2.0 quick start guide
-
 ## Installation & Setup
 
-### Quick Installation
-```bash
-# 1. Clone to .claude directory
-git clone <repository-url> .claude/sb-marketplace
+### Installation (GitHub-based)
 
-# 2. Run setup script
-cd .claude/sb-marketplace
-bash setup.sh
+1. **Add to your `.claude/settings.json`**:
+   ```json
+   {
+     "extraKnownMarketplaces": {
+       "sb-marketplace": {
+         "source": {
+           "source": "github",
+           "repo": "superbenefit/sb-marketplace"
+         }
+       }
+     },
+     "enabledPlugins": {
+       "astro-dev@sb-marketplace": true
+     }
+   }
+   ```
 
-# 3. Restart Claude Code
+2. **Restart Claude Code** - Plugin automatically downloads and enables
 
-# 4. Commands are now available!
-/develop Your task here
-```
+3. **Start using commands**:
+   ```bash
+   /develop Add a blog with categories and pagination
+   ```
 
-### Manual Configuration (if setup.sh fails)
-
-Add to `.claude/settings.json`:
-```json
-{
-  "extraKnownMarketplaces": {
-    "sb-marketplace": {
-      "source": {
-        "source": "directory",
-        "path": "./.claude/sb-marketplace"
-      }
-    }
-  },
-  "enabledPlugins": {
-    "astro-dev@sb-marketplace": true
-  }
-}
-```
+That's it! Claude Code handles all downloads and updates automatically.
 
 ## Git Status
 
 **Current Branch**: `main`
-**Status**: Modified (marketplace name fix, documentation updates)
-**Recent Commits**:
+**Repository**: https://github.com/superbenefit/sb-marketplace
+**Status**: v0.3.0 Release - GitHub transition complete
+
+**Recent Changes** (v0.3.0):
+- Transitioned to GitHub-based loading
+- Removed setup.sh script (obsolete)
+- Updated all documentation for GitHub workflow
+- Added CONTRIBUTING.md
+- Added root LICENSE file
+- Updated all version numbers to 0.3.0
+
+**Previous Commits** (v0.2.0):
+- `e62b9db`: Fix marketplace name and rationalize semantic versioning to v0.2.0
 - `678f45a`: Add comprehensive claude.md context file and update README
 - `599851a`: Fix marketplace source type from 'local' to 'directory'
 - `0955540`: Fix plugin version inconsistencies and document usage issues
-- `553af3a`: Update setup.sh to reflect v2.0 architecture
-- `02c6b7e`: Add claude.md snippet to READMEs
-
-**Pending Changes**:
-- Marketplace manifest: Name corrected to "sb-marketplace" (was "astro-dev-marketplace")
-- Root CHANGELOG.md created with complete version history
-- Plugin CHANGELOG.md updated to reflect v2.0.0
-- claude.md updated with latest information
 
 ## Version History
 
-### v2.0.0 (Current - 2025-10-18)
-**Major Release**: Orchestration architecture
+### v0.3.0 (Current - 2025-10-20)
+**Breaking Release**: GitHub-based loading
+
+**Breaking Changes**:
+- Transitioned from directory-based to GitHub-based plugin loading
+- Removed `setup.sh` installation script
+- Installation now requires GitHub source configuration
+
+**Changes**:
+- Simplified installation to 2 steps (settings.json + restart)
+- Documentation completely rewritten for GitHub workflow
+- Added CONTRIBUTING.md for community contributions
+- Added root LICENSE file (CC0 1.0 Universal)
+- Repository field added to plugin.json
+
+**Migration**:
+- Users must update settings.json from `directory` source to `github` source
+- See CHANGELOG.md for detailed migration guide
+
+### v0.2.0 (2025-10-19)
+**Major Release**: Orchestration architecture with directory-based loading
 
 **New Features**:
 - Orchestration-based workflows (`astro-orchestrator` agent)
@@ -332,8 +344,9 @@ Add to `.claude/settings.json`:
 - Rigor calibration system
 - 4 agents (was 2 in v1.0)
 
-### v1.0.0 (Previous)
-- Initial release
+### v0.1.0 (2025-10-18)
+- Initial marketplace release
+- Directory-based installation with setup.sh
 - Basic agent system
 - Direct command invocation
 - 17 knowledge base files
@@ -343,8 +356,7 @@ Add to `.claude/settings.json`:
 
 See `plugin-usage.md` for documented issues:
 - Marketplace plugin command loading edge cases
-- Version inconsistencies (resolved in recent commits)
-- Setup script compatibility notes
+- For migration issues, see CHANGELOG.md migration guide
 
 ## File Statistics
 
@@ -445,10 +457,27 @@ This work is dedicated to the public domain. You can copy, modify, distribute an
 
 **Critical Rules**: Extensions in imports, `astro:` prefix, `class` not `className`, async in frontmatter, `SECRET_*` vs `PUBLIC_*`
 
-**File Paths**:
-- Plugin: `F:/projects/sb-marketplace/astro-dev/`
-- Knowledge Base: `F:/projects/sb-marketplace/astro-dev/knowledge-base/`
-- Agents: `F:/projects/sb-marketplace/astro-dev/agents/`
-- Commands: `F:/projects/sb-marketplace/astro-dev/commands/`
+**Repository Structure**:
+- Plugin: `astro-dev/`
+- Knowledge Base: `astro-dev/knowledge-base/`
+- Agents: `astro-dev/agents/`
+- Commands: `astro-dev/commands/`
 
-**Version**: 0.2.0 | **Status**: Initial Development | **Updated**: 2025-10-19
+**Installation**: Add GitHub source to `.claude/settings.json`:
+```json
+{
+  "extraKnownMarketplaces": {
+    "sb-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "superbenefit/sb-marketplace"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "astro-dev@sb-marketplace": true
+  }
+}
+```
+
+**Version**: 0.3.0 | **Status**: Production Ready | **Updated**: 2025-10-20 | **Repository**: https://github.com/superbenefit/sb-marketplace
