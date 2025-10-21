@@ -1,7 +1,7 @@
 {
   "name": "sb-marketplace",
   "description": "SuperBenefit plugin marketplace for Claude Code - Astro/Starlight development toolkit",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "owner": {
     "name": "SuperBenefit Community",
     "email": "info@superbenefit.org"
@@ -11,7 +11,7 @@
       "name": "astro-dev",
       "source": "./astro-dev",
       "description": "Complete Astro/Starlight development toolkit with skills, agents, and automated workflows",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "author": {
         "name": "rathermercurial.eth",
         "email": "rathermercurial@protonmail.com"

@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2025-10-20
+
+### Fixed
+- **Critical plugin loading issue** - Added required YAML frontmatter to agent files
+  - Added frontmatter to `astro-developer.md` with name, description, and model fields
+  - Added frontmatter to `astro-orchestrator.md` with name, description, and model fields
+- **plugin.json schema** - Fixed incorrect format for agents and commands fields
+  - Removed incorrect object-based `commands` field (was using `{"name": "path"}` format)
+  - Removed incorrect object-based `agents` field (was using nested objects)
+  - Now relies on auto-discovery from default `commands/` and `agents/` directories
+- All slash commands, agents, and skills now load correctly when plugin is installed
+
+### Changed
+- Plugin.json now uses auto-discovery for agents and commands instead of explicit paths
+- Agents use consistent YAML frontmatter format across all 4 agent files
+
+### Documentation
+- Updated plugin-diagnostic-report.md with root cause analysis and fixes
+- Added testing instructions for verifying plugin functionality
+
 ## [0.3.0] - 2025-10-20
 
 ### Breaking Changes

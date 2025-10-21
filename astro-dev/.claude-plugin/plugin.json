@@ -1,7 +1,7 @@
 {
   "name": "astro-dev",
   "description": "Astro/Starlight development toolkit with orchestrator-based workflows and configurable validation",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": {
     "name": "rathremercurial.eth",
     "email": "rathermercurial@protonmail.com",
@@ -17,32 +17,6 @@
     "orchestration",
     "superbenefit"
   ],
-  "agents": {
-    "astro-orchestrator": {
-      "path": "agents/astro-orchestrator.md",
-      "description": "Coordinates tasks and manages agent workflows"
-    },
-    "astro-developer": {
-      "path": "agents/astro-developer.md",
-      "description": "Handles code implementation for Astro/Starlight projects"
-    },
-    "astro-auditor": {
-      "path": "agents/astro-auditor.md",
-      "description": "Validates code with configurable rigor levels"
-    },
-    "astro-architect": {
-      "path": "agents/astro-architect.md",
-      "description": "Plans content architecture and system design"
-    }
-  },
-  "commands": {
-    "develop": "commands/develop.md",
-    "implement": "commands/implement.md",
-    "architect": "commands/architect.md",
-    "audit": "commands/audit.md",
-    "lookup": "commands/lookup.md"
-  },
-  "hooks": "hooks/hooks.json",
   "skills": [
     {
       "name": "astro-coding",
