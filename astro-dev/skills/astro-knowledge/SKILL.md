@@ -28,19 +28,13 @@ This skill loads **on-demand** when agents need:
 - Configuration examples
 - Migration guidance
 
-## Usage by Agents
+## Usage
 
-### astro-developer
-Uses for API verification during implementation
-
-### astro-architect  
-References for design decisions and feature availability
-
-### astro-auditor
-Checks code against current API standards
-
-### astro-orchestrator
-Determines when documentation lookup is needed
+This skill is loaded when:
+- Using the `/lookup` command for quick API reference
+- During implementation via `/dev` for API verification
+- When planning with `/design` for feature availability checks
+- Whenever current syntax or API documentation is needed
 
 ## Documentation Resources
 
@@ -178,4 +172,5 @@ Source: https://docs.astro.build/...
 ## Version
 
 **Skill Version**: 2.0 (On-Demand Reference)
-**Last Updated**: 2025-10-18
+**Plugin Version**: v0.4.0+
+**Last Updated**: 2025-11-05
