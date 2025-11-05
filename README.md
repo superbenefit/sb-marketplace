@@ -36,7 +36,7 @@ Then restart Claude Code. The plugin will be automatically downloaded and enable
 
 ## What's Included
 
-### Astro Dev Plugin (v0.3.0)
+### Astro Dev Plugin (v0.3.1)
 
 A toolkit for Astro and Starlight development with orchestrator-based workflows.
 
@@ -227,8 +227,8 @@ For issues, questions, or contributions:
 
 ## Credits
 
-Created by rathremercurial.eth for the SuperBenefit community.
+Created by rathermercurial.eth for the SuperBenefit community.
 
-**Version**: 0.3.0
+**Version**: 0.3.1
 **Last Updated**: 2025-10-20
 **Repository**: https://github.com/superbenefit/sb-marketplace

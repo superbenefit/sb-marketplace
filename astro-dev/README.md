@@ -66,7 +66,7 @@ This plugin provides expert assistance for Astro and Starlight development throu
 
 ### Skills
 
-#### `astro-developer`
+#### `astro-coding`
 Expert implementation skill for all Astro/Starlight code:
 - Component development
 - Dynamic routing with getStaticPaths
@@ -76,14 +76,14 @@ Expert implementation skill for all Astro/Starlight code:
 
 **When it loads**: When implementing features, writing components, or fixing code.
 
-#### `astro-docs`
+#### `astro-knowledge`
 Documentation specialist for quick API verification:
 - API syntax lookup
 - Feature availability checks
 - Current best practices
 - Documentation search
 
-**When it loads**: When using `/docs-lookup` or needing API verification.
+**When it loads**: When using `/lookup` or needing API verification.
 
 ### Agents
 
@@ -122,10 +122,10 @@ Runs comprehensive code audit:
 
 Returns prioritized report with fixes.
 
-#### `/docs-lookup [api]`
+#### `/lookup [api]`
 Quick documentation lookup:
 ```bash
-/docs-lookup getCollection
+/lookup getCollection
 ```
 
 Returns syntax, examples, and documentation links.
@@ -208,7 +208,7 @@ Comprehensive reference materials organized by category:
 ```
 
 Claude will:
-1. Load astro-developer skill
+1. Load astro-coding skill
 2. Check project structure
 3. Review best practices
 4. Implement the feature
@@ -231,7 +231,7 @@ Claude will:
 ### API Verification
 
 ```bash
-/docs-lookup getStaticPaths
+/lookup getStaticPaths
 ```
 
 Returns:
@@ -297,10 +297,10 @@ astro-dev/
 ├── .claude-plugin/
 │   └── plugin.json              # Manifest
 ├── skills/
-│   ├── astro-developer/
+│   ├── astro-coding/
 │   │   ├── SKILL.md            # Skill definition
 │   │   └── references/         # Quick references
-│   └── astro-docs/
+│   └── astro-knowledge/
 │       ├── SKILL.md            # Skill definition
 │       └── references/         # Cached docs
 ├── agents/
@@ -309,7 +309,7 @@ astro-dev/
 ├── commands/
 │   ├── implement.md            # /implement command
 │   ├── audit.md                # /audit command
-│   └── docs-lookup.md          # /docs-lookup command
+│   └── lookup.md               # /lookup command
 ├── hooks/
 │   └── hooks.json              # Hook configuration
 ├── scripts/
@@ -342,12 +342,12 @@ astro-dev/
 ### Skills Not Triggering
 
 1. Skills load on-demand when relevant
-2. Use commands to explicitly trigger: `/implement`, `/docs-lookup`
+2. Use commands to explicitly trigger: `/implement`, `/lookup`
 3. Check skill names match plugin manifest
 
 ## Version
 
-Current version: 0.3.0
+Current version: 0.3.1
 
 See CHANGELOG.md for version history and updates.
 
@@ -359,7 +359,7 @@ This plugin is dedicated to the public domain. You can copy, modify, distribute 
 
 ## Author
 
-Created by rathremercurial.eth for the SuperBenefit community.
+Created by rathermercurial.eth for the SuperBenefit community.
 
 ## Contributing
 

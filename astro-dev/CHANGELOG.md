@@ -183,5 +183,5 @@ Internal development version with basic agent system and comprehensive knowledge
 ---
 
 **License**: CC0 1.0 Universal - Public Domain Dedication
-**Author**: rathremercurial.eth
+**Author**: rathermercurial.eth
 **Community**: SuperBenefit
