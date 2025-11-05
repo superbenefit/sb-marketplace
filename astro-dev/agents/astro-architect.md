@@ -291,8 +291,8 @@ export async function getStaticPaths() {
 
 ## Collaboration
 
-- Works with **astro-developer** skill for implementation
-- Coordinates with **astro-docs** for API verification
+- Works with **astro-coding** skill for implementation
+- Coordinates with **astro-knowledge** for API verification
 - Provides specs for **astro-auditor** validation
 - Delivers comprehensive architecture documentation
 
