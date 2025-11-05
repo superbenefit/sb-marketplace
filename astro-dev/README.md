@@ -1,355 +1,388 @@
 # Astro Dev Plugin
 
-Comprehensive Astro and Starlight development toolkit for Claude Code.
+Simplified Astro and Starlight development toolkit for Claude Code with intelligent tiered knowledge loading.
 
 ## Overview
 
-This plugin provides expert assistance for Astro and Starlight development through skills, agents, commands, and automated workflows.
+The astro-dev plugin provides expert assistance for Astro and Starlight development through two primary commands and a smart knowledge system that loads context efficiently based on your task.
 
-```md
-## Astro Dev Toolkit (astro-dev v2.0)
+**Version**: 0.4.0 (Simplified Architecture)
 
-### Commands
+## Quick Start
 
-- `/develop [task]` - Orchestrated workflow with task analysis and agent coordination
-- `/implement [task]` - Direct implementation bypassing orchestration
-- `/architect [design]` - Architecture planning without implementation
-- `/audit [level] [path]` - Code validation (auto/light/medium/comprehensive)
-- `/lookup [api]` - Quick API reference and documentation
-
-### Skills
-
-- `astro-coding` - Coding patterns and best practices (loaded on-demand)
-- `astro-knowledge` - API documentation and reference lookup
-
-### Critical Astro Rules
-
-**Always**:
-- Include file extensions: `import Layout from './Layout.astro'`
-- Use `astro:content` (not `astro/content`)
-- Use `class` (not `className`) in .astro components
-- Type Props interfaces
-- Fetch data in frontmatter, not templates
-
-**Never**:
-- Access `Astro.params` inside `getStaticPaths()`
-- Use `await` in template sections
-- Expose secrets to client code
-- Use `className` in Astro components
-
-### Testing Functionality
-
-- # Test orchestrator
-  - /develop Create a simple contact form component
-
-- # Test direct implementation
-  - /implement Add a Header component with navigation
-
-- # Test architecture planning
-  - /architect Design a blog with categories and tags
-
-- # Test validation
-  - /audit auto src/components/
-
-- # Test API lookup
-  - /lookup getCollection
-
-### Workflow
-
-1. Use `/develop` for most tasks - orchestrator determines best approach
-2. Use `/implement` for simple, straightforward changes
-3. Use `/architect` when planning complex systems
-4. Validation happens automatically with adaptive rigors
-```
-
-## Components
-
-### Skills
-
-#### `astro-coding`
-Expert implementation skill for all Astro/Starlight code:
-- Component development
-- Dynamic routing with getStaticPaths
-- Content collections
-- Configuration management
-- Bug fixes and debugging
-
-**When it loads**: When implementing features, writing components, or fixing code.
-
-#### `astro-knowledge`
-Documentation specialist for quick API verification:
-- API syntax lookup
-- Feature availability checks
-- Current best practices
-- Documentation search
-
-**When it loads**: When using `/lookup` or needing API verification.
-
-### Agents
-
-#### `astro-auditor`
-Comprehensive code auditor running in parallel:
-- **Priority 1**: Build-breaking issues (missing extensions, wrong imports)
-- **Priority 2**: Security, performance, common bugs
-- **Priority 3**: Best practices and code quality
-
-**When to use**: After implementations or via `/audit` command.
-
-#### `astro-architect`
-Content architecture specialist for complex planning:
-- Collection structure design
-- Custom loader architecture
-- Multi-source content systems
-- Routing strategy
-
-**When to use**: When planning complex content architectures or integrations.
-
-### Commands
-
-#### `/implement [feature]`
-Starts implementation with full context:
 ```bash
-/implement Add blog pagination with TypeScript types
+# Main development command - handles everything
+/dev Create a blog with categories and pagination
+
+# Quick API reference lookup
+/lookup getCollection
+
+# Architecture planning for complex systems
+/design Multi-tenant docs system with GitBook integration
 ```
 
-Loads best practices, syntax references, and enables auto-audit.
+That's it! The `/dev` command is your primary tool for all Astro/Starlight development.
 
-#### `/audit [path]`
-Runs comprehensive code audit:
+## Commands
+
+### `/dev [description]`
+**Your main command** for all development tasks - from simple components to complex features.
+
 ```bash
-/audit src/pages/blog/
+# Simple component
+/dev Add a Footer component with social links
+
+# Feature with collections
+/dev Create a blog with categories, tags, and pagination
+
+# Bug fixes
+/dev Fix all TypeScript errors in the components folder
+
+# Complex integration
+/dev Integrate external API with custom content loader
+
+# With validation control
+/dev Add authentication --audit=comprehensive
+/dev Create test component --audit=off
 ```
 
-Returns prioritized report with fixes.
+**Auto-validation**: Automatically validates code based on task size (can override with `--audit` flag).
 
-#### `/lookup [api]`
-Quick documentation lookup:
+### `/lookup [query]`
+**Quick API reference** for Astro/Starlight APIs and syntax.
+
 ```bash
 /lookup getCollection
+/lookup client directives
+/lookup starlight config
+/lookup getStaticPaths
 ```
 
-Returns syntax, examples, and documentation links.
+Returns current syntax, examples, and documentation links.
 
-### Hooks
-
-#### PostToolUse: Auto-Audit
-Automatically runs quick validation after editing Astro files:
-- Checks common mistakes
-- Validates imports
-- Detects security issues
-- Non-blocking execution
-
-#### PreToolUse: Audit Notification
-Notifies before implementing in Astro files.
-
-### Scripts
-
-#### `audit-runner.sh`
-Automated validation script that checks:
-- `astro:content` vs `astro/content`
-- `class` vs `className`
-- Missing file extensions
-- `Astro.params` in getStaticPaths
-- Template `await` usage
-- Exposed environment variables
-
-## Knowledge Base
-
-Comprehensive reference materials organized by category:
-
-### `astro-syntax/`
-- Component structure
-- Directives reference
-- Import patterns
-- Routing patterns
-- Configuration options
-
-### `common-mistakes/`
-- Cataloged errors and fixes
-- Why they happen
-- How to prevent them
-
-### `best-practices/`
-- Astro development patterns
-- Starlight-specific guidance
-- TypeScript patterns
-- Performance optimization
-
-### `architecture-patterns/`
-- Content collections design
-- Routing architecture
-- System organization
-
-### `loader-examples/`
-- Custom loader implementations
-- API integration patterns
-
-### `integration-guides/`
-- External data sources
-- CMS integration
-- Multi-source systems
-
-### `starlight/`
-- Starlight configuration
-- Theme customization
-- Plugin integration
-
-### `audit/`
-- Audit checklists
-- Quality standards
-- Code review guidelines
-
-## Usage Patterns
-
-### Basic Implementation
+### `/design [system]`
+**Architecture planning** for complex systems (optional, use before complex builds).
 
 ```bash
-/implement Create a dynamic route for documentation pages
+/design Multi-language content system with versioning
+/design Integration strategy for Supabase + Astro
+/design Refactor 200 pages to content collections
 ```
 
-Claude will:
-1. Load astro-coding skill
-2. Check project structure
-3. Review best practices
-4. Implement the feature
-5. Auto-audit the code
-6. Report any issues
+Provides design documents, schemas, and implementation roadmaps. Then use `/dev` to implement.
+
+## Skills
+
+The plugin provides two skills with intelligent loading:
+
+### `astro-coding`
+**Implementation knowledge** loaded in three tiers:
+
+- **Tier 1** (Always, ~100 tokens): Critical rules that prevent breaking errors
+- **Tier 2** (Context-based, ~400 tokens): Relevant patterns for your task
+- **Tier 3** (On-demand, ~800 tokens): Deep-dive references for complex work
+
+### `astro-knowledge`
+**API reference** for quick documentation lookups via `/lookup` command.
+
+## Critical Rules (Always Applied)
+
+These 10 rules are enforced on every task to prevent build failures:
+
+1. ✅ **File extensions required**: `import Layout from './Layout.astro'` (not `'./Layout'`)
+2. ✅ **Correct module prefix**: `'astro:content'` (not `'astro/content'`)
+3. ✅ **Use `class` not `className`** in .astro files
+4. ✅ **Await in frontmatter only**, never in templates
+5. ✅ **Never expose `SECRET_*`** environment variables client-side
+6. ✅ **Type all Props interfaces** with TypeScript
+7. ✅ **Define `getStaticPaths()`** for dynamic routes
+8. ✅ **Don't access `Astro.params`** inside `getStaticPaths()`
+9. ✅ **Use `CollectionEntry<'name'>`** types for collections
+10. ✅ **Validate XSS risk** with `set:html` (only use with trusted sources)
+
+## Knowledge Base Structure
+
+```
+knowledge-base/
+├── critical-rules.md          # Tier 1: Always loaded (~100 tokens)
+├── astro-patterns.md          # Tier 2: Core patterns (~400 tokens)
+├── error-catalog.md           # Tier 2: 100+ errors indexed by symptom
+├── starlight-guide.md         # Tier 2: Starlight-specific patterns
+└── deep-dive/                 # Tier 3: On-demand (~800 tokens)
+    ├── integrations.md        # External data & custom loaders
+    ├── content-collections-reference.md
+    ├── content-loader-api.md
+    ├── external-data-integration.md
+    ├── routing-pages-reference.md
+    └── starlight-specific.md
+```
+
+## Usage Examples
+
+### Simple Component
+```bash
+/dev Create a Card component with title, description, and image props
+```
+
+Result: Component created with proper TypeScript types, accessibility, and validation.
+
+### Feature Implementation
+```bash
+/dev Add a blog with categories, pagination, and RSS feed
+```
+
+Result: Complete blog system with content collections, dynamic routes, and all features.
+
+### Bug Fixing
+```bash
+/dev Fix the import errors in the components folder
+```
+
+Result: All imports fixed with proper extensions and module paths.
 
 ### Complex Architecture
+```bash
+# Step 1: Design the system
+/design Multi-tenant docs with role-based access control
 
+# Step 2: Review the architecture document
+
+# Step 3: Implement it
+/dev Implement the multi-tenant docs architecture
 ```
-I need to integrate content from GitBook and local MDX files into a unified documentation site with versioning
-```
 
-Claude will:
-1. Invoke astro-architect agent
-2. Design collection structure
-3. Plan loader architecture
-4. Create implementation roadmap
-5. Provide code templates
+Result: Full implementation following the design plan.
 
-### API Verification
-
+### API Lookup
 ```bash
 /lookup getStaticPaths
 ```
 
-Returns:
-- Current syntax with types
-- Common usage patterns
-- Documentation link
-- Related APIs
+Result: Current syntax, usage examples, TypeScript types, and documentation links.
 
-### Code Audit
+## How It Works
 
-```bash
-/audit
+### Tiered Knowledge Loading
+
+The plugin loads knowledge intelligently based on your task:
+
+**For simple tasks** (1 file, <20 lines):
+- Tier 1: Critical rules only (~100 tokens)
+- Fast execution, minimal context
+
+**For standard tasks** (2-5 files, <100 lines):
+- Tier 1: Critical rules (~100 tokens)
+- Tier 2: Relevant patterns (~400 tokens)
+- Balanced approach
+
+**For complex tasks** (>5 files or >100 lines):
+- Tier 1: Critical rules (~100 tokens)
+- Tier 2: Multiple patterns (~400 tokens)
+- Tier 3: Deep-dive references (~800 tokens)
+- Comprehensive coverage
+
+### Auto-Validation
+
+Code is automatically validated based on task size:
+
+| Task Size | Validation Level | Checks |
+|-----------|------------------|--------|
+| Small (1 file, <20 lines) | Light | 5 critical checks |
+| Medium (2-5 files, <100 lines) | Medium | 20 checks |
+| Large (>5 files or >100 lines) | Comprehensive | 50+ checks |
+| Security-sensitive | Always Comprehensive | Full security scan |
+
+Override with `--audit` flag: `--audit=off`, `--audit=light`, `--audit=comprehensive`
+
+## Error Catalog
+
+The plugin includes a comprehensive error catalog with 100+ common Astro errors indexed by symptom:
+
+```
+Error: "Cannot find module './Header'"
+→ Cause: Missing file extension
+→ Fix: Add .astro extension
+→ Example: import Header from './Header.astro';
 ```
 
-Get comprehensive report:
-- Critical issues requiring fixes
-- Performance improvements
-- Best practice suggestions
-- Positive patterns observed
+**Categories**:
+- Import errors
+- Component errors
+- Routing errors
+- Collection errors
+- Starlight errors
+- Configuration errors
+- TypeScript errors
+- Runtime errors
 
-## Critical Rules
+## What Changed in v0.4.0
 
-The plugin enforces these critical Astro rules:
+### Simplified Architecture
 
-### ✅ DO
-- Include file extensions in imports: `import Layout from './Layout.astro'`
-- Use `astro:content` for content collections
-- Use `class` not `className` in Astro components
-- Fetch data in frontmatter, not templates
-- Sort collections when order matters
-- Type all component Props
+**Before (v0.3.x)**:
+- 5 commands: `/develop`, `/implement`, `/architect`, `/audit`, `/lookup`
+- 4 agents: orchestrator, developer, architect, auditor
+- Complex orchestration layer
+- Decision paralysis ("which command do I use?")
 
-### ❌ DON'T
-- Access `Astro.params` inside `getStaticPaths()`
-- Use `await` in template sections
-- Expose server secrets to client
-- Over-hydrate static content
-- Use `className` in Astro components
+**Now (v0.4.0)**:
+- 3 commands: `/dev`, `/design`, `/lookup`
+- 0 agents (skills handle everything)
+- Direct, simple execution
+- Clear purpose for each command
 
-## Progressive Context Loading
+### Benefits
 
-The plugin uses progressive disclosure to optimize context:
+- **60% reduction in complexity**: Fewer commands, no agents, clearer architecture
+- **Better UX**: One main command (`/dev`) for all implementation
+- **Same expertise**: All domain knowledge preserved in tiered skills
+- **Lower token usage**: Intelligent tiered loading reduces overhead by 40-70%
+- **Easier maintenance**: Simpler architecture, fewer moving parts
 
-1. **Metadata** (~100 tokens): Skill descriptions always loaded
-2. **Skill Body** (<5k tokens): Loaded when skill is triggered
-3. **Resources** (unlimited): Loaded on-demand from knowledge base
+### Migration from v0.3.x
 
-This ensures efficient context usage while maintaining comprehensive capabilities.
-
-## Integration with MCP
-
-If you have the `astro-docs` MCP server installed, the plugin integrates for:
-- Real-time documentation lookups
-- Latest API information
-- Version-specific docs
-
-The skill provides cached fallback when MCP is unavailable.
+| Old Command | New Command |
+|-------------|-------------|
+| `/develop [task]` | `/dev [task]` |
+| `/implement [task]` | `/dev [task]` |
+| `/architect [design]` | `/design [design]` |
+| `/audit [level] [path]` | `--audit=level` flag on `/dev` |
+| `/lookup [api]` | `/lookup [api]` (unchanged) |
 
 ## File Organization
 
 ```
 astro-dev/
 ├── .claude-plugin/
-│   └── plugin.json              # Manifest
+│   └── plugin.json              # Plugin manifest
 ├── skills/
 │   ├── astro-coding/
-│   │   ├── SKILL.md            # Skill definition
-│   │   └── references/         # Quick references
+│   │   └── SKILL.md            # Implementation knowledge (tiered)
 │   └── astro-knowledge/
-│       ├── SKILL.md            # Skill definition
-│       └── references/         # Cached docs
-├── agents/
-│   ├── astro-auditor.md        # Auditor agent
-│   └── astro-architect.md      # Architect agent
+│       └── SKILL.md            # API reference
 ├── commands/
-│   ├── implement.md            # /implement command
-│   ├── audit.md                # /audit command
-│   └── lookup.md               # /lookup command
-├── hooks/
-│   └── hooks.json              # Hook configuration
-├── scripts/
-│   └── audit-runner.sh         # Audit automation
-└── knowledge-base/
-    ├── astro-syntax/           # Syntax refs
-    ├── common-mistakes/        # Error catalog
-    ├── best-practices/         # Patterns
-    ├── architecture-patterns/  # Design refs
-    ├── loader-examples/        # Loader code
-    ├── integration-guides/     # Integration docs
-    ├── starlight/              # Starlight refs
-    └── audit/                  # Audit guides
+│   ├── dev.md                  # Main development command
+│   ├── design.md               # Architecture planning
+│   └── lookup.md               # API lookup
+├── knowledge-base/
+│   ├── critical-rules.md       # Tier 1
+│   ├── astro-patterns.md       # Tier 2
+│   ├── error-catalog.md        # Tier 2
+│   ├── starlight-guide.md      # Tier 2
+│   └── deep-dive/              # Tier 3
+├── CHANGELOG.md                # Version history
+└── README.md                   # This file
+```
+
+## Installation
+
+### Via GitHub Marketplace
+
+Add to `.claude/settings.json`:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "sb-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "superbenefit/sb-marketplace"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "astro-dev@sb-marketplace": true
+  }
+}
+```
+
+Restart Claude Code to load the plugin.
+
+### Verify Installation
+
+Check that commands are available:
+```bash
+/dev --help
+/lookup --help
+/design --help
 ```
 
 ## Troubleshooting
 
 ### Plugin Not Loading
 
-1. Check `.claude/settings.json` has correct marketplace path
-2. Verify plugin is enabled in settings
+1. Check `.claude/settings.json` has correct marketplace configuration
+2. Verify plugin is enabled: `"astro-dev@sb-marketplace": true`
 3. Restart Claude Code
+4. Check for errors in Claude Code logs
 
-### Hooks Not Working
+### Commands Not Working
 
-1. Ensure `audit-runner.sh` is executable: `chmod +x scripts/audit-runner.sh`
-2. Check hook configuration in `hooks/hooks.json`
-3. Verify bash is available in PATH
+1. Ensure you're in an Astro/Starlight project directory
+2. Try explicit command: `/dev Create a simple component`
+3. Check command syntax in `/dev --help`
 
-### Skills Not Triggering
+### Unexpected Results
 
-1. Skills load on-demand when relevant
-2. Use commands to explicitly trigger: `/implement`, `/lookup`
-3. Check skill names match plugin manifest
+1. Be more specific in your request
+2. Mention constraints: `/dev Add blog (must use existing UI library)`
+3. Reference existing patterns: `/dev Create Card (like existing Button component)`
 
-## Version
+## Best Practices
 
-Current version: 0.3.1
+### Write Clear Requests
 
-See CHANGELOG.md for version history and updates.
+```
+❌ /dev make a blog
+✅ /dev Create a blog collection with title, date, author, tags, and categories
+
+❌ /dev fix it
+✅ /dev Fix the TypeScript errors in src/components/Header.astro
+```
+
+### Use the Right Command
+
+- **`/dev`** → For all implementation (components, pages, features, fixes)
+- **`/design`** → For complex system architecture (multi-collection systems, integrations)
+- **`/lookup`** → For quick API reference (syntax, examples)
+
+### Batch Related Work
+
+```bash
+# Good - batch related features
+/dev Add blog with categories, tags, RSS feed, and pagination
+
+# Less efficient - multiple separate requests
+/dev Add blog collection
+/dev Add categories to blog
+/dev Add tags to blog
+/dev Add RSS feed
+/dev Add pagination
+```
+
+### Specify Constraints
+
+```bash
+/dev Add authentication (using Supabase, needs role-based access)
+/dev Create dashboard (must match existing design system)
+/dev Integrate API (rate limit 100 req/min, needs caching)
+```
+
+## Support
+
+- **Issues**: [GitHub Issues](https://github.com/superbenefit/sb-marketplace/issues)
+- **Email**: rathermercurial@protonmail.com
+- **SuperBenefit**: info@superbenefit.org
+
+## Contributing
+
+Contributions welcome! Areas for improvement:
+
+- Additional error patterns in error catalog
+- More patterns in knowledge base
+- Deep-dive references for advanced topics
+- Documentation improvements
+- Bug fixes
 
 ## License
 
@@ -361,16 +394,6 @@ This plugin is dedicated to the public domain. You can copy, modify, distribute 
 
 Created by rathermercurial.eth for the SuperBenefit community.
 
-## Contributing
+---
 
-Contributions welcome! Areas for improvement:
-- Additional knowledge base content
-- New skills and agents
-- Enhanced audit checks
-- Better documentation
-- Bug fixes and optimizations
-
-## Support
-
-- Email: rathermercurial@protonmail.com
-- SuperBenefit: info@superbenefit.org
+**Pro tip**: Start with `/dev` for everything. It's smart enough to handle simple to complex tasks automatically. Only use `/design` when you need explicit architecture planning first.

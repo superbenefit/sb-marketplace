@@ -1,7 +1,7 @@
 {
   "name": "astro-dev",
-  "description": "Astro/Starlight development toolkit with orchestrator-based workflows and configurable validation",
-  "version": "0.3.1",
+  "description": "Simplified Astro/Starlight development toolkit with intelligent tiered knowledge loading and streamlined commands",
+  "version": "0.4.0",
   "author": {
     "name": "rathermercurial.eth",
     "email": "rathermercurial@protonmail.com",
@@ -14,19 +14,19 @@
     "starlight",
     "development",
     "documentation",
-    "orchestration",
+    "simplified",
     "superbenefit"
   ],
   "skills": [
     {
       "name": "astro-coding",
       "path": "skills/astro-coding",
-      "description": "Provides coding patterns and best practices with selective loading"
+      "description": "Tiered knowledge provider: critical rules (always), common patterns (context-based), deep-dive references (on-demand)"
     },
     {
       "name": "astro-knowledge",
       "path": "skills/astro-knowledge",
-      "description": "API documentation and reference lookup"
+      "description": "Quick API documentation and reference lookup for Astro/Starlight"
     }
   ]
 }
