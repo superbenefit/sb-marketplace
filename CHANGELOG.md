@@ -158,5 +158,5 @@ Then restart Claude Code.
 ---
 
 **License**: CC0 1.0 Universal - Public Domain Dedication
-**Maintainer**: rathremercurial.eth
+**Maintainer**: rathermercurial.eth
 **Community**: SuperBenefit
