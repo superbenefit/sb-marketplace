@@ -1,6 +1,6 @@
-# Astro Developer Skill References
+# Astro Coding Skill References
 
-Quick reference materials for the astro-developer skill.
+Quick reference materials for the astro-coding skill.
 
 ## Contents
 

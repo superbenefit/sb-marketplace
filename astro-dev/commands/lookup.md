@@ -278,10 +278,15 @@ Use `/lookup` for:
 - ✅ Configuration options
 - ✅ Fast reference during coding
 
-Use `/architect` for:
+Use `/design` for:
 - System design decisions
 - Architecture planning
 - Complex integrations
+
+Use `/dev` for:
+- All implementation tasks
+- Creating components/pages/routes
+- Bug fixes and refactoring
 
 ## Most Common Lookups
 
@@ -294,8 +299,8 @@ Use `/architect` for:
 
 ## Version
 
-**Command Version**: 2.0
-**Compatible with**: astro-dev plugin v2.0+
-**Last Updated**: 2025-10-18
+**Command Version**: 2.0 (v0.4.0)
+**Compatible with**: astro-dev plugin v0.4.0+
+**Last Updated**: 2025-11-05
 
 Use `/lookup` for fast, accurate API reference.
