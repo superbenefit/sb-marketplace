@@ -1,0 +1,26 @@
+{
+  "name": "knowledge-skill-builder",
+  "description": "Transform markdown knowledge repositories into Claude skills with guided analysis, generation, and packaging tools",
+  "version": "1.0.0",
+  "author": {
+    "name": "SuperBenefit Community",
+    "email": "info@superbenefit.org"
+  },
+  "repository": "https://github.com/superbenefit/sb-marketplace",
+  "license": "CC0",
+  "tags": [
+    "skills",
+    "knowledge",
+    "documentation",
+    "frameworks",
+    "tools",
+    "superbenefit"
+  ],
+  "skills": [
+    {
+      "name": "knowledge-skill-builder",
+      "path": "skills/knowledge-skill-builder",
+      "description": "Transform markdown knowledge repositories into Claude skills"
+    }
+  ]
+}

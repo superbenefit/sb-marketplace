@@ -1,7 +1,7 @@
 {
   "name": "sb-marketplace",
-  "description": "SuperBenefit plugin marketplace for Claude Code - Astro/Starlight development toolkit",
-  "version": "0.3.1",
+  "description": "SuperBenefit plugin marketplace for Claude Code - Development tools and knowledge skill builders",
+  "version": "0.4.0",
   "owner": {
     "name": "SuperBenefit Community",
     "email": "info@superbenefit.org"
@@ -23,6 +23,24 @@
         "documentation"
       ],
       "category": "development"
+    },
+    {
+      "name": "knowledge-skill-builder",
+      "source": "./knowledge-skill-builder",
+      "description": "Transform markdown knowledge repositories into Claude skills with guided analysis, generation, and packaging tools",
+      "version": "1.0.0",
+      "author": {
+        "name": "SuperBenefit Community",
+        "email": "info@superbenefit.org"
+      },
+      "tags": [
+        "skills",
+        "knowledge",
+        "documentation",
+        "frameworks",
+        "tools"
+      ],
+      "category": "tools"
     }
   ]
 }
