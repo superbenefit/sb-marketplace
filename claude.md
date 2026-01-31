@@ -1,472 +1,223 @@
 # sb-marketplace: Claude Code Context
 
-**Quick Reference**: This is the Astro Dev Marketplace - a GitHub-hosted plugin marketplace for Claude Code providing a comprehensive Astro/Starlight development toolkit (v0.3.0).
+**Quick Reference**: SuperBenefit plugin marketplace for Claude Code - provides an Astro/Starlight development toolkit, a Cloudflare developer platform toolkit, and a knowledge skill builder.
 
 ## Project Identity
 
-- **Name**: sb-marketplace (Astro Dev Marketplace)
-- **Version**: 0.3.0 (Marketplace: 0.3.0, Plugin: 0.3.0)
+- **Name**: sb-marketplace (SuperBenefit Plugin Marketplace)
+- **Version**: 0.4.0 (Marketplace)
+- **Plugins**: astro-dev v0.4.0, cloudflare-dev v0.1.0, knowledge-skill-builder v1.0.0
 - **Type**: Claude Code Plugin Marketplace
 - **Repository**: https://github.com/superbenefit/sb-marketplace
 - **Status**: Production Ready
 - **License**: CC0 1.0 Universal (Public Domain)
-- **Author**: rathremercurial.eth
+- **Author**: rathermercurial.eth
 - **Community**: SuperBenefit
-- **Last Updated**: 2025-10-20
-
-## Architecture at a Glance
-
-### V2.0 Orchestration Model
-
-The plugin uses a **multi-layer orchestration architecture** with intelligent task coordination:
-
-```
-User Commands (/develop, /implement, /architect, /audit, /lookup)
-        ↓
-Orchestration Layer (astro-orchestrator)
-  • Task analysis & complexity estimation
-  • Agent coordination (parallel when beneficial)
-  • Audit rigor calibration (light/medium/comprehensive)
-  • Token optimization via selective loading
-        ↓
-Specialized Agents (astro-developer, astro-architect, astro-auditor)
-  • Code implementation with best practices
-  • System design & architecture planning
-  • 3-priority validation (P1: Breaking, P2: Security, P3: Best practices)
-        ↓
-Capability Providers (astro-coding skill, astro-knowledge skill)
-  • Implementation patterns & critical rules
-  • API documentation & reference lookup
-  • Progressive disclosure (metadata → body → resources)
-        ↓
-Knowledge Base (5 consolidated files, ~1500 lines)
-  • error-catalog.md (indexed by symptom)
-  • astro-patterns.md (components, routing, collections)
-  • starlight-guide.md (Starlight-specific features)
-  • integrations.md (loaders, external data, TypeScript)
-  • content-knowledge/ (detailed references)
-```
-
-### Key Design Principles
-
-1. **Token Optimization**: 50% reduction through consolidation + selective loading
-2. **Progressive Disclosure**: Load metadata first, resources on-demand
-3. **Adaptive Validation**: Audit rigor scales with task complexity
-4. **Parallel Execution**: Multiple agents work simultaneously when beneficial
-5. **Rule Enforcement**: 5 critical rules enforced in ALL code
+- **Last Updated**: 2026-01-30
 
 ## Directory Structure
 
 ```
 sb-marketplace/                    # GitHub repository root
 ├── .claude-plugin/
-│   └── marketplace.json          # Marketplace manifest (plugin registry)
-├── astro-dev/                    # Main plugin directory (v0.3.0)
+│   └── marketplace.json          # Marketplace manifest (3 plugins)
+├── astro-dev/                    # Astro/Starlight plugin (v0.4.0)
 │   ├── .claude-plugin/
-│   │   └── plugin.json           # Plugin manifest
+│   │   └── plugin.json
 │   ├── .mcp.json                 # MCP server config (astro-docs)
-│   ├── agents/                   # 4 specialized agents
-│   │   ├── astro-orchestrator.md # Task coordinator
-│   │   ├── astro-developer.md    # Code implementation
-│   │   ├── astro-auditor.md      # Code validation
-│   │   └── astro-architect.md    # System design planning
-│   ├── commands/                 # 5 slash commands
-│   │   ├── develop.md            # /develop - orchestrated workflow
-│   │   ├── implement.md          # /implement - direct implementation
-│   │   ├── architect.md          # /architect - architecture planning
-│   │   ├── audit.md              # /audit - code validation
+│   ├── commands/                 # 3 slash commands
+│   │   ├── dev.md                # /dev - primary development command
+│   │   ├── design.md             # /design - architecture planning
 │   │   └── lookup.md             # /lookup - API reference
-│   ├── skills/                   # 2 capability providers
-│   │   ├── astro-coding/         # Implementation patterns
+│   ├── skills/
+│   │   ├── astro-coding/         # Implementation patterns & critical rules
 │   │   │   ├── SKILL.md
 │   │   │   └── references/
 │   │   └── astro-knowledge/      # API docs & reference
 │   │       ├── SKILL.md
-│   │       └── references/       # (docs-index.md, llms.txt, llms-full.md)
-│   ├── knowledge-base/           # Consolidated references (~1500 lines)
-│   │   ├── README.md             # Navigation guide
-│   │   ├── error-catalog.md      # 10+ error categories
-│   │   ├── astro-patterns.md     # Components, routing, collections, etc.
-│   │   ├── starlight-guide.md    # Starlight-specific docs
-│   │   ├── integrations.md       # External data, loaders, TypeScript
-│   │   └── content-knowledge/    # Detailed reference materials
+│   │       └── references/
+│   ├── knowledge-base/           # Consolidated references
+│   │   ├── README.md
+│   │   ├── critical-rules.md
+│   │   ├── error-catalog.md
+│   │   ├── astro-patterns.md
+│   │   ├── starlight-guide.md
+│   │   └── deep-dive/
 │   │       ├── content-collections-reference.md
 │   │       ├── content-loader-api.md
 │   │       ├── external-data-integration.md
+│   │       ├── integrations.md
 │   │       ├── routing-pages-reference.md
 │   │       └── starlight-specific.md
 │   ├── hooks/
-│   │   └── hooks.json            # Currently empty; reserved for future
-│   ├── README.md                 # Detailed plugin documentation
-│   ├── CHANGELOG.md              # Version history
-│   └── LICENSE                   # CC0 dedication
-├── CONTRIBUTING.md               # Contribution guidelines
-├── CHANGELOG.md                  # Marketplace version history
-├── LICENSE                       # CC0 dedication
-├── plugin-usage.md               # Troubleshooting & known issues
-├── README.md                     # Marketplace overview & quick start
-├── claude.md                     # This file - primary context document
+│   │   └── hooks.json
+│   ├── README.md
+│   ├── CHANGELOG.md
+│   └── LICENSE
+├── cloudflare-dev/               # Cloudflare plugin (v0.1.0)
+│   ├── .claude-plugin/
+│   │   └── plugin.json
+│   ├── .mcp.json                 # MCP server config (cloudflare-docs)
+│   ├── agents/                   # 3 specialized agents
+│   │   ├── cf-validator.md       # Validation agent
+│   │   ├── cloudflare-helper.md  # Infrastructure agent
+│   │   └── docs-writer.md        # Documentation agent
+│   ├── commands/                 # 4 slash commands
+│   │   ├── cf-dev.md             # /cf-dev - primary development command
+│   │   ├── validate.md           # /validate - best practices validation
+│   │   ├── deploy-check.md       # /deploy-check - pre-deployment checklist
+│   │   └── test-mcp.md           # /test-mcp - MCP server testing
+│   ├── skills/
+│   │   └── cloudflare-knowledge/
+│   │       ├── SKILL.md
+│   │       └── references/       # 8 reference files
+│   │           ├── agent-patterns.md
+│   │           ├── agents-mcp.md
+│   │           ├── agents-sdk.md
+│   │           ├── auth-deployment.md
+│   │           ├── observability.md
+│   │           ├── vectorize.md
+│   │           ├── workers-platform.md
+│   │           └── workflows.md
+│   ├── hooks/
+│   │   └── hooks.json
+│   ├── README.md
+│   ├── CHANGELOG.md
+│   └── LICENSE
+├── knowledge-skill-builder/      # Knowledge skill builder (v1.0.0)
+│   ├── .claude-plugin/
+│   │   └── plugin.json
+│   ├── skills/
+│   │   └── knowledge-skill-builder/
+│   │       ├── SKILL.md
+│   │       ├── assets/templates/
+│   │       ├── references/
+│   │       └── scripts/
+│   ├── README.md
+│   ├── CHANGELOG.md
+│   └── LICENSE
+├── CONTRIBUTING.md
+├── CHANGELOG.md
+├── LICENSE
+├── plugin-usage.md
+├── README.md
+├── CLAUDE.md                     # This file
 └── .gitignore
 ```
 
-## Components Overview
+---
 
-### Agents (4 Specialized Coordinators)
+## astro-dev Plugin (v0.4.0)
 
-| Agent | File | Purpose | Invoked By |
-|-------|------|---------|------------|
-| **astro-orchestrator** | `agents/astro-orchestrator.md` | Task analysis, agent coordination, rigor calibration | `/develop` command |
-| **astro-developer** | `agents/astro-developer.md` | Code implementation with pattern enforcement | Most tasks; primary executor |
-| **astro-auditor** | `agents/astro-auditor.md` | 3-priority validation (P1/P2/P3) | All implementations; `/audit` |
-| **astro-architect** | `agents/astro-architect.md` | System design, collection architecture | `/architect`, complex tasks |
+Astro/Starlight development toolkit with skills and automated workflows.
 
-### Skills (2 Capability Providers)
+### Astro Commands
 
-| Skill | Directory | Purpose | Loading Strategy |
-|-------|-----------|---------|------------------|
-| **astro-coding** | `skills/astro-coding/` | Patterns, best practices, critical rules | Selective (keyword-based) |
-| **astro-knowledge** | `skills/astro-knowledge/` | API docs, references, feature lookup | On-demand + MCP integration |
+| Command | Function | Best For |
+|---------|----------|----------|
+| `/dev` | Primary development command | Most tasks (90%) |
+| `/design` | Architecture planning | Complex system design |
+| `/lookup` | API reference lookup | Quick documentation queries |
 
-### Commands (5 User Entry Points)
+### Astro Skills
 
-| Command | File | Function | Best For |
-|---------|------|----------|----------|
-| `/develop` | `commands/develop.md` | Orchestrated workflow | Most tasks; primary command |
-| `/implement` | `commands/implement.md` | Direct implementation | Simple, straightforward changes |
-| `/architect` | `commands/architect.md` | Architecture planning only | Complex system design |
-| `/audit [level]` | `commands/audit.md` | Code validation | Quality checks (auto/light/medium/comprehensive) |
-| `/lookup` | `commands/lookup.md` | API reference | Quick documentation lookup |
+| Skill | Purpose |
+|-------|---------|
+| **astro-coding** | Implementation patterns, critical rules, best practices |
+| **astro-knowledge** | API documentation, reference lookup, MCP integration |
 
-### Knowledge Base (5 Consolidated Files)
+### Critical Astro Rules
 
-| File | Lines | Purpose | Key Content |
-|------|-------|---------|-------------|
-| **error-catalog.md** | ~300 | Error index by symptom | Import errors, hydration, routing, collections, build, TypeScript, config, CSS, MDX, runtime |
-| **astro-patterns.md** | ~400 | Implementation patterns | Components, routing (static/dynamic), collections, hydration, config, data fetching, images, TypeScript |
-| **starlight-guide.md** | ~300 | Starlight-specific | Setup, page types, frontmatter, sidebars, components, overrides, i18n, styling, search |
-| **integrations.md** | ~300 | Advanced patterns | Content loaders, auth, error handling, incremental updates, data transformation, caching, TypeScript |
-| **content-knowledge/** | ~200 | Detailed references | In-depth guides for collections, loaders, external data, routing, Starlight |
+1. **File Extensions in Imports**: `import Layout from './Layout.astro'` (NOT `'./Layout'`)
+2. **Module Prefix**: `import { getCollection } from 'astro:content'` (NOT `'astro/content'`)
+3. **CSS Attributes**: `<div class="...">` (NOT `className`)
+4. **Async in Frontmatter**: Awaits only in `---` frontmatter, not templates
+5. **Environment Variables**: `SECRET_*` for server-side, `PUBLIC_*` only for client
 
-## Critical Rules (Mandatory for ALL Code)
+### MCP Integration
 
-These 5 rules are enforced by all agents and must NEVER be violated:
-
-1. **File Extensions in Imports**: `import Layout from './Layout.astro'` ✅ (NOT `'./Layout'` ❌)
-2. **Module Prefix**: `import { getCollection } from 'astro:content'` ✅ (NOT `'astro/content'` ❌)
-3. **CSS Attributes**: `<div class="...">` ✅ (NOT `className` ❌)
-4. **Async in Frontmatter**: Awaits only in `---` frontmatter, not templates ✅
-5. **Environment Variables**: `SECRET_*` for server-side, `PUBLIC_*` only for client ✅
-
-## Workflow Examples
-
-### Example 1: Simple Task
-```bash
-/develop Add a Footer component
-```
-
-**Flow**:
-1. `astro-orchestrator` analyzes: scope = 1 component (~20 lines)
-2. Determines: `astro-developer` + light audit
-3. `astro-developer` loads component patterns only
-4. Implements footer, applies critical rules
-5. `astro-auditor` runs 5 quick checks
-6. Complete in ~1 minute
-
-### Example 2: Complex Task
-```bash
-/develop Build multi-language system with GitBook integration
-```
-
-**Flow**:
-1. `astro-orchestrator` analyzes: multi-source, complex architecture
-2. Determines: `astro-architect` → `astro-developer` → comprehensive audit
-3. `astro-architect` loads collection + integration patterns
-4. Designs system architecture, defines schemas
-5. `astro-developer` implements (parallel if beneficial)
-6. `astro-auditor` runs 50+ comprehensive checks
-7. Complete in ~15 minutes
-
-### Example 3: Direct Implementation
-```bash
-/implement Create a Card component with image and description
-```
-
-**Flow**:
-1. Bypasses orchestration
-2. `astro-developer` invoked directly
-3. Loads component patterns
-4. Implements Card.astro
-5. Applies critical rules
-6. Complete in ~30 seconds
-
-## Adaptive Audit Rigor
-
-| Level | Checks | Duration | Use Case |
-|-------|--------|----------|----------|
-| **Light** | 5 | ~30 sec | <20 lines, 1 file, low-risk changes |
-| **Medium** | 20 | ~2 min | Standard features, typical development |
-| **Comprehensive** | 50+ | ~5 min | Critical areas, large scope, security-sensitive |
-| **Auto** | Variable | Variable | Orchestrator determines appropriate level |
-
-**Validation Priorities**:
-- **P1 (Breaking)**: Build failures, syntax errors, import issues - MUST fix
-- **P2 (Security/Performance)**: Security holes, performance problems, bugs - SHOULD fix
-- **P3 (Best Practices)**: Style issues, minor optimizations - NICE to fix
-
-## Technology Stack
-
-### Core Technologies
-- **Claude Code** (latest) - AI-powered code editor/assistant
-- **Astro v4.x+** - Static site builder and modern web framework
-- **Starlight v0.21.x+** - Astro-based documentation framework
-- **TypeScript** - Type-safe development
-- **Markdown** - All documentation and skill definitions
-- **Bash/Shell** - Setup and automation
-
-### Plugin Infrastructure
-- **Claude Code Plugin System** - Extensible architecture
-- **Skill-based Design** - Modular capability providers
-- **Agent-based Workflows** - Specialized task coordinators
-- **Hook System** - PreToolUse/PostToolUse for automation (reserved)
-- **MCP Integration** - Model Context Protocol for real-time docs
-
-### External Integrations
-- **MCP Server**: `astro-docs` (HTTPS at mcp.docs.astro.build/mcp)
-- Optional: GitBook, PostgreSQL, other CMSs (documented in integrations.md)
-
-## Configuration Files
-
-### 1. Plugin Manifest (`astro-dev/.claude-plugin/plugin.json`)
-Defines plugin metadata, agents, commands, skills, and hooks. Current version: 0.3.0
-
-### 2. Marketplace Manifest (`.claude-plugin/marketplace.json`)
-Registers plugins in the marketplace. Points to `./astro-dev` (relative path works with GitHub)
-
-### 3. MCP Configuration (`astro-dev/.mcp.json`)
-Connects to astro-docs MCP server for real-time API documentation
-
-### 4. Hooks Configuration (`astro-dev/hooks/hooks.json`)
-Currently empty; reserved for automated workflows (PostToolUse, PreToolUse)
-
-## Installation & Setup
-
-### Installation (GitHub-based)
-
-1. **Edit settings file**:
-   - Global: `~/.claude/settings.json`
-   - Single project: `<project>/.claude/settings.local.json`
-
-   ```json
-   {
-     "extraKnownMarketplaces": {
-       "sb-marketplace": {
-         "source": {
-           "source": "github",
-           "repo": "superbenefit/sb-marketplace"
-         }
-       }
-     },
-     "enabledPlugins": {
-       "astro-dev@sb-marketplace": true
-     }
-   }
-   ```
-
-2. **Restart Claude Code** - Plugin automatically downloads and enables
-
-3. **Start using commands**:
-   ```bash
-   /develop Add a blog with categories and pagination
-   ```
-
-Claude Code handles all downloads and updates automatically.
-
-## Git Status
-
-**Current Branch**: `main`
-**Repository**: https://github.com/superbenefit/sb-marketplace
-**Status**: v0.3.0 Release - GitHub transition complete
-
-**Recent Changes** (v0.3.0):
-- Transitioned to GitHub-based loading
-- Removed setup.sh script (obsolete)
-- Updated all documentation for GitHub workflow
-- Added CONTRIBUTING.md
-- Added root LICENSE file
-- Updated all version numbers to 0.3.0
-
-**Previous Commits** (v0.2.0):
-- `e62b9db`: Fix marketplace name and rationalize semantic versioning to v0.2.0
-- `678f45a`: Add comprehensive claude.md context file and update README
-- `599851a`: Fix marketplace source type from 'local' to 'directory'
-- `0955540`: Fix plugin version inconsistencies and document usage issues
-
-## Version History
-
-### v0.3.0 (Current - 2025-10-20)
-**Breaking Release**: GitHub-based loading
-
-**Breaking Changes**:
-- Transitioned from directory-based to GitHub-based plugin loading
-- Removed `setup.sh` installation script
-- Installation now requires GitHub source configuration
-
-**Changes**:
-- Simplified installation to 2 steps (settings.json + restart)
-- Documentation completely rewritten for GitHub workflow
-- Added CONTRIBUTING.md for community contributions
-- Added root LICENSE file (CC0 1.0 Universal)
-- Repository field added to plugin.json
-
-**Migration**:
-- Users must update settings.json from `directory` source to `github` source
-- See CHANGELOG.md for detailed migration guide
-
-### v0.2.0 (2025-10-19)
-**Major Release**: Orchestration architecture with directory-based loading
-
-**New Features**:
-- Orchestration-based workflows (`astro-orchestrator` agent)
-- `/develop` command for intelligent task planning
-- `/architect` command for system design
-- Adaptive audit levels (light/medium/comprehensive)
-- Knowledge base consolidation (17 files → 5 files)
-- 50% token reduction through selective loading
-- Parallel agent execution when beneficial
-
-**Breaking Changes**:
-- `/docs-lookup` renamed to `/lookup`
-- `astro-developer` skill → `astro-coding`
-- `astro-docs` skill → `astro-knowledge`
-- Auto-audit hooks removed
-
-**Improvements**:
-- Token usage optimized by ~50%
-- Progressive disclosure pattern implemented
-- Task complexity analysis algorithm
-- Rigor calibration system
-- 4 agents (was 2 in v1.0)
-
-### v0.1.0 (2025-10-18)
-- Initial marketplace release
-- Directory-based installation with setup.sh
-- Basic agent system
-- Direct command invocation
-- 17 knowledge base files
-- Fixed audit levels
-
-## Known Issues & Troubleshooting
-
-See `plugin-usage.md` for documented issues:
-- Marketplace plugin command loading edge cases
-- For migration issues, see CHANGELOG.md migration guide
-
-## File Statistics
-
-- **Total Documentation Lines**: ~6,138 across all .md files
-- **Knowledge Base**: ~1,500 lines (consolidated from ~3,000)
-- **Token Reduction**: ~50% through consolidation + selective loading
-- **Agent Count**: 4 (orchestrator, developer, auditor, architect)
-- **Command Count**: 5 (develop, implement, architect, audit, lookup)
-- **Skill Count**: 2 (astro-coding, astro-knowledge)
-- **Critical Rules**: 5 (enforced in all code)
-
-## Best Practices for Using This Marketplace
-
-### When to Use Each Command
-
-1. **Use `/develop`** (90% of tasks):
-   - Any task requiring analysis or planning
-   - Multi-step implementations
-   - When unsure of complexity
-   - Default choice for most work
-
-2. **Use `/implement`** (for simple tasks):
-   - Single component creation
-   - Straightforward changes
-   - <20 lines of code
-   - No architecture needed
-
-3. **Use `/architect`** (planning phase):
-   - Before starting complex features
-   - Multi-source content systems
-   - Collection architecture design
-   - Integration planning
-
-4. **Use `/audit`** (quality checks):
-   - After manual code changes
-   - Before committing critical code
-   - When debugging issues
-   - Periodic codebase reviews
-
-5. **Use `/lookup`** (quick reference):
-   - Syntax verification
-   - API parameter lookup
-   - Quick examples
-   - Feature availability check
-
-### Token Optimization Tips
-
-1. **Trust the orchestrator**: `/develop` automatically optimizes loading
-2. **Use specific keywords**: Helps selective pattern loading
-3. **Start with `/architect`** for complex tasks: Prevents re-planning
-4. **Choose appropriate audit level**: Don't over-validate simple changes
-5. **Use `/lookup`** for docs**: Lighter than loading full knowledge base
-
-## Contributing
-
-### Adding Knowledge
-- Update consolidated files in `astro-dev/knowledge-base/`
-- Add error patterns to `error-catalog.md` (indexed by symptom)
-- Document new Astro features in `astro-patterns.md`
-- Update version info in this claude.md file
-
-### Improving Skills
-- Enhance patterns in `skills/astro-coding/references/`
-- Add API references to `astro-knowledge/references/`
-- Update critical rules if needed (coordinate with agents)
-
-### Extending Agents
-- Improve agent capabilities in `agents/*.md`
-- Refine orchestration logic in `astro-orchestrator.md`
-- Add specialized agents (update plugin.json)
-
-### Updating Configuration
-- Plugin manifest: `astro-dev/.claude-plugin/plugin.json`
-- Marketplace manifest: `.claude-plugin/marketplace.json`
-- Version bumps require updates in both + CHANGELOG.md
-
-## Support & Contact
-
-- **Issues**: Create an issue in this repository
-- **Email**: rathermercurial@protonmail.com
-- **Community**: SuperBenefit (info@superbenefit.org)
-
-## License
-
-CC0 1.0 Universal - Public Domain Dedication
-
-This work is dedicated to the public domain. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.
+- **Server**: `astro-docs` at `https://mcp.docs.astro.build/mcp`
 
 ---
 
-## Quick Reference Card
+## cloudflare-dev Plugin (v0.1.0)
 
-**Primary Command**: `/develop [task description]`
-**Direct Implementation**: `/implement [simple task]`
-**Planning Only**: `/architect [design request]`
-**Validation**: `/audit [auto|light|medium|comprehensive] [path]`
-**Quick Docs**: `/lookup [api name]`
+Cloudflare developer platform toolkit - patterns, best practices, and automation for Workers, Agents SDK, MCP servers, Vectorize, and Workflows.
 
-**Critical Rules**: Extensions in imports, `astro:` prefix, `class` not `className`, async in frontmatter, `SECRET_*` vs `PUBLIC_*`
+### Cloudflare Coverage
 
-**Repository Structure**:
-- Plugin: `astro-dev/`
-- Knowledge Base: `astro-dev/knowledge-base/`
-- Agents: `astro-dev/agents/`
-- Commands: `astro-dev/commands/`
+| Topic | Reference File | Key Content |
+|-------|---------------|-------------|
+| **Agents SDK** | `agents-sdk.md` | Agent class, state management, WebSockets, SQL, scheduling |
+| **Agent Patterns** | `agent-patterns.md` | 5 design patterns: routing, orchestration, evaluation, parallelization, specialization |
+| **MCP Servers** | `agents-mcp.md` | createMcpHandler (recommended), stateful MCP with WorkerTransport, OAuth |
+| **Auth & Deploy** | `auth-deployment.md` | workers-oauth-provider, Workers Builds, CI/CD, secrets |
+| **Vectorize** | `vectorize.md` | Vector indexes, semantic search, RAG, two-stage retrieval |
+| **Workflows** | `workflows.md` | Durable execution, steps, retries, waitForEvent |
+| **Workers Platform** | `workers-platform.md` | R2, KV, D1, bindings, wrangler.jsonc configuration |
+| **Observability** | `observability.md` | Logging, tracing, Analytics Engine, Logpush |
 
-**Installation**: Add to settings (global: `~/.claude/settings.json` or project: `<project>/.claude/settings.local.json`):
+### Cloudflare Commands
+
+| Command | Function |
+|---------|----------|
+| `/cf-dev` | Primary development command with context loading, MCP verification, and validation |
+| `/validate` | Comprehensive validation against Cloudflare best practices |
+| `/deploy-check` | Pre-deployment checklist with resource verification |
+| `/test-mcp` | MCP server testing with Inspector |
+
+### Cloudflare Agents
+
+| Agent | Purpose |
+|-------|---------|
+| **cf-validator** | Project validation against Cloudflare best practices |
+| **cloudflare-helper** | Infrastructure and deployment specialist (KV, R2, D1, Vectorize, secrets) |
+| **docs-writer** | Documentation generator (README, API docs, architecture diagrams) |
+
+### Critical Cloudflare Standards
+
+```jsonc
+// wrangler.jsonc - REQUIRED for all Cloudflare projects
+{
+  "compatibility_date": "2025-03-07",  // Minimum for Agents SDK
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true }
+}
+```
+
+- **D1**: Always use prepared statements (SQL injection prevention)
+- **KV**: Eventually consistent - return what you wrote, don't read-back
+- **Reranker**: Use batch API format (`contexts` array, not per-document)
+- **MCP**: Use `createMcpHandler` (not legacy `McpAgent`) for new servers
+- **Vectorize topK**: Max 20 with metadata, max 100 without
+
+### MCP Integration
+
+- **Server**: `cloudflare-docs` at `https://docs.mcp.cloudflare.com/mcp`
+
+---
+
+## knowledge-skill-builder Plugin (v1.0.0)
+
+Transforms markdown knowledge repositories into Claude skills with guided analysis, generation, and packaging tools.
+
+See `knowledge-skill-builder/README.md` for details.
+
+---
+
+## Configuration
+
+### Marketplace Manifest (`.claude-plugin/marketplace.json`)
+Registers all 3 plugins. Current version: 0.4.0
+
+### MCP Configurations
+- `astro-dev/.mcp.json` - Astro docs MCP server
+- `cloudflare-dev/.mcp.json` - Cloudflare docs MCP server
+
+### Installation (GitHub-based)
+
+Add to settings (global `~/.claude/settings.json` or project `.claude/settings.local.json`):
+
 ```json
 {
   "extraKnownMarketplaces": {
@@ -478,9 +229,42 @@ This work is dedicated to the public domain. You can copy, modify, distribute an
     }
   },
   "enabledPlugins": {
-    "astro-dev@sb-marketplace": true
+    "astro-dev@sb-marketplace": true,
+    "cloudflare-dev@sb-marketplace": true,
+    "knowledge-skill-builder@sb-marketplace": true
   }
 }
 ```
 
-**Version**: 0.3.0 | **Status**: Production Ready | **Updated**: 2025-10-20 | **Repository**: https://github.com/superbenefit/sb-marketplace
+Restart Claude Code after editing settings.
+
+## Contributing
+
+- **Astro knowledge**: Update files in `astro-dev/knowledge-base/`
+- **Cloudflare knowledge**: Update files in `cloudflare-dev/skills/cloudflare-knowledge/references/`
+- **Plugin manifests**: `<plugin>/.claude-plugin/plugin.json`
+- **Marketplace**: `.claude-plugin/marketplace.json`
+- Version bumps require updates in plugin.json + CHANGELOG.md
+
+## Support & Contact
+
+- **Issues**: https://github.com/superbenefit/sb-marketplace/issues
+- **Email**: rathermercurial@protonmail.com
+- **Community**: SuperBenefit (info@superbenefit.org)
+
+## License
+
+CC0 1.0 Universal - Public Domain Dedication
+
+---
+
+## Quick Reference Card
+
+### Astro Commands
+`/dev [task]` | `/design [architecture request]` | `/lookup [api name]`
+
+### Cloudflare Commands
+`/cf-dev [task]` | `/validate [path]` | `/deploy-check` | `/test-mcp`
+
+**Marketplace**: v0.4.0 | **astro-dev**: v0.4.0 | **cloudflare-dev**: v0.1.0 | **knowledge-skill-builder**: v1.0.0
+**Repository**: https://github.com/superbenefit/sb-marketplace

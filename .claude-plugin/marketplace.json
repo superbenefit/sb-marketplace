@@ -1,6 +1,6 @@
 {
   "name": "sb-marketplace",
-  "description": "SuperBenefit plugin marketplace for Claude Code - Development tools and knowledge skill builders",
+  "description": "SuperBenefit plugin marketplace for Claude Code - Development tools, knowledge skill builders, and Cloudflare platform toolkit",
   "version": "0.4.0",
   "owner": {
     "name": "SuperBenefit Community",
@@ -41,6 +41,24 @@
         "tools"
       ],
       "category": "tools"
+    },
+    {
+      "name": "cloudflare-dev",
+      "source": "./cloudflare-dev",
+      "description": "Cloudflare developer platform toolkit - patterns, best practices, and automation for Workers, Agents SDK, MCP, Vectorize, and Workflows",
+      "version": "0.1.0",
+      "author": {
+        "name": "rathermercurial.eth",
+        "email": "rathermercurial@protonmail.com"
+      },
+      "tags": [
+        "development",
+        "cloudflare",
+        "workers",
+        "agents",
+        "mcp"
+      ],
+      "category": "development"
     }
   ]
 }
