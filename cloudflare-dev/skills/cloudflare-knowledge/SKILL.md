@@ -1,7 +1,6 @@
 ---
+name: cloudflare-knowledge
 description: Cloudflare edge platform patterns for Workers, Agents SDK, MCP servers, Vectorize, and Workflows. Use when building on Cloudflare infrastructure.
-globs: ["src/**/*.ts", "wrangler.jsonc", "*.ts"]
-alwaysApply: false
 ---
 
 # Cloudflare Knowledge

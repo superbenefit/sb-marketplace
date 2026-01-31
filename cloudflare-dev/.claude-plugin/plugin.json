@@ -9,22 +9,15 @@
   },
   "repository": "https://github.com/superbenefit/sb-marketplace",
   "license": "CC0",
-  "tags": [
+  "keywords": [
     "cloudflare",
     "workers",
     "agents",
     "mcp",
     "vectorize",
     "workflows",
-    "durable-objects",
     "development",
     "superbenefit"
   ],
-  "skills": [
-    {
-      "name": "cloudflare-knowledge",
-      "path": "skills/cloudflare-knowledge",
-      "description": "Cloudflare developer platform knowledge - infrastructure patterns, configuration, best practices, and reference documentation"
-    }
-  ]
+  "skills": "./skills/"
 }

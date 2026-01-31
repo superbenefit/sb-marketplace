@@ -1,10 +1,8 @@
-# Cloudflare Dev Plugin
+# cloudflare-dev
 
-Cloudflare developer platform toolkit for Claude Code - patterns, best practices, and automation for building on the Cloudflare edge.
+Cloudflare developer platform toolkit for Claude Code - patterns, best practices, and automation for Workers, Agents SDK, MCP servers, Vectorize, and Workflows.
 
-## Overview
-
-The cloudflare-dev plugin provides expert assistance for Cloudflare Workers, Agents SDK, MCP servers, Vectorize, and Workflows through specialized commands, agents, and a comprehensive knowledge base.
+Part of the [SuperBenefit Plugin Marketplace](https://github.com/superbenefit/sb-marketplace).
 
 **Version**: 0.1.0
 
@@ -14,7 +12,7 @@ The cloudflare-dev plugin provides expert assistance for Cloudflare Workers, Age
 # Primary development command
 /cf-dev Build an MCP server with OAuth authentication
 
-# Validate a project against best practices
+# Validate against best practices
 /validate
 
 # Pre-deployment checklist
@@ -27,7 +25,7 @@ The cloudflare-dev plugin provides expert assistance for Cloudflare Workers, Age
 ## Commands
 
 ### `/cf-dev [description]`
-**Primary command** for Cloudflare development. Loads relevant context, verifies against MCP docs, implements, and validates.
+Primary command for Cloudflare development. Loads relevant context, verifies against MCP docs, implements, and validates.
 
 ```bash
 /cf-dev Create a Vectorize-backed RAG agent with semantic search
@@ -35,44 +33,32 @@ The cloudflare-dev plugin provides expert assistance for Cloudflare Workers, Age
 /cf-dev Build a Workflow for content sync with retry logic
 ```
 
-### `/validate`
-**Comprehensive validation** against Cloudflare best practices.
+### `/validate [path|focus]`
+Comprehensive validation against Cloudflare best practices. Checks configuration, dependencies, MCP patterns, API usage, and workflow patterns.
 
 ```bash
 /validate              # Full project validation
 /validate src/         # Validate specific directory
+/validate mcp          # Focus on MCP patterns only
 ```
-
-Checks: configuration, dependencies, MCP patterns, API patterns, workflow patterns.
 
 ### `/deploy-check`
-**Pre-deployment checklist** with resource verification.
-
-```bash
-/deploy-check          # Run full deployment readiness check
-```
+Pre-deployment checklist with resource verification.
 
 ### `/test-mcp`
-**MCP server testing** with the MCP Inspector tool.
-
-```bash
-/test-mcp              # Start interactive MCP testing
-```
+MCP server testing with the MCP Inspector tool.
 
 ## Agents
 
-### `cf-validator`
-Validates projects against Cloudflare best practices. Checks configuration, dependencies, MCP server patterns, API usage, and workflow patterns.
-
-### `cloudflare-helper`
-Infrastructure and deployment specialist. Handles KV, R2, D1, Vectorize, Queues, secrets management, and debugging.
-
-### `docs-writer`
-Documentation generator. Produces README files, API docs, architecture diagrams, and troubleshooting guides.
+| Agent | Purpose |
+|-------|---------|
+| **cf-validator** | Project validation against Cloudflare best practices |
+| **cloudflare-helper** | Infrastructure and deployment specialist (KV, R2, D1, Vectorize, secrets) |
+| **docs-writer** | Documentation generator (README, API docs, architecture diagrams) |
 
 ## Knowledge Base
 
-The plugin includes comprehensive reference documentation:
+The cloudflare-knowledge skill includes 8 reference files:
 
 | File | Coverage |
 |------|----------|
@@ -98,11 +84,10 @@ These are enforced in all generated code:
 }
 ```
 
-- **Agents**: `new_sqlite_classes` MUST be in migrations
+- **Agents**: `new_sqlite_classes` must be in migrations
 - **MCP**: Use `createMcpHandler` (not legacy McpAgent) for new servers
 - **D1**: Always use prepared statements (no string interpolation)
 - **KV**: Eventually consistent - return written value, don't re-read
-- **R2**: Use conditional headers for cache-aware reads
 - **Vectorize**: topK max 20 with metadata, max 100 without
 - **Reranker**: Must use batch API format
 - **Workflows**: Always await steps, steps must be idempotent
@@ -111,11 +96,8 @@ These are enforced in all generated code:
 
 Connects to the Cloudflare docs MCP server for real-time API verification:
 - Server: `https://docs.mcp.cloudflare.com/mcp`
-- Used by `/cf-dev` command to verify implementations
 
 ## Installation
-
-### Via GitHub Marketplace
 
 Add to your Claude Code settings (global `~/.claude/settings.json` or project `.claude/settings.local.json`):
 
@@ -143,7 +125,7 @@ Restart Claude Code to load the plugin.
 cloudflare-dev/
 ├── .claude-plugin/
 │   └── plugin.json                    # Plugin manifest
-├── .mcp.json                          # MCP server config
+├── .mcp.json                          # Cloudflare docs MCP server
 ├── agents/
 │   ├── cf-validator.md                # Validation agent
 │   ├── cloudflare-helper.md           # Infrastructure agent
@@ -153,27 +135,24 @@ cloudflare-dev/
 │   ├── validate.md                    # Validation command
 │   ├── deploy-check.md                # Deployment checklist
 │   └── test-mcp.md                    # MCP testing
-├── hooks/
-│   └── hooks.json                     # Reserved for future
 ├── skills/
 │   └── cloudflare-knowledge/
 │       ├── SKILL.md                   # Skill manifest
 │       └── references/                # 8 reference files
+├── hooks/
+│   └── hooks.json
 ├── CHANGELOG.md
-├── LICENSE
-└── README.md
+└── LICENSE
 ```
 
 ## Support
 
 - **Issues**: [GitHub Issues](https://github.com/superbenefit/sb-marketplace/issues)
 - **Email**: rathermercurial@protonmail.com
-- **Community**: SuperBenefit (info@superbenefit.org)
+- **Community**: [SuperBenefit](https://superbenefit.org)
 
 ## License
 
 CC0 1.0 Universal - Public Domain Dedication
-
-## Author
 
 Created by rathermercurial.eth for the SuperBenefit community.
