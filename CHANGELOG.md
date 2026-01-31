@@ -7,6 +7,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-01-31
+
+### Added
+- **project-mgmt v0.1.0** - Spec-driven development plugin with persistent markdown planning
+  - Single skill (`project-mgmt`) with 6-phase progressive disclosure workflow
+  - Background subagent (`pm-bookkeeper`) for file updates using Haiku
+  - Hooks for session init, plan refresh, and completion checking
+  - Templates for plan, spec, findings, and progress files
+  - See [project-mgmt/CHANGELOG.md](./project-mgmt/CHANGELOG.md) for details
+
+### Removed
+- **knowledge-skill-builder** - Removed entirely (hallucinated plugin from previous session)
+  - Deleted plugin directory and all contents
+  - Purged all references from marketplace.json, CLAUDE.md, README.md
+
+### Changed
+- Marketplace version bumped to 0.5.0
+- Updated CLAUDE.md and README.md to reflect 3-plugin marketplace
+
+## [0.4.0] - 2026-01-30
+
+### Added
+- **cloudflare-dev v0.1.0** - Cloudflare developer platform toolkit
+  - 8 audited knowledge base reference files (Agents SDK, MCP, Vectorize, Workflows, Workers Platform, Auth/Deploy, Observability, Agent Patterns)
+  - 4 commands (cf-dev, validate, deploy-check, test-mcp)
+  - 3 agents (cf-validator, cloudflare-helper, docs-writer)
+  - cloudflare-knowledge skill with SKILL.md quick reference
+  - MCP integration (docs.mcp.cloudflare.com)
+  - See [cloudflare-dev/CHANGELOG.md](./cloudflare-dev/CHANGELOG.md) for details
+
+### Changed
+- **astro-dev v0.4.0** - Major simplification of plugin architecture
+  - See [astro-dev/CHANGELOG.md](./astro-dev/CHANGELOG.md) for details
+- Marketplace version bumped to 0.4.0
+- Updated CLAUDE.md with cloudflare-dev section and astro-dev updates
+
 ## [0.3.1] - 2025-10-20
 
 ### Fixed
@@ -50,39 +86,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - All directory-based installation documentation
 - References to local/project-local installation methods
 
-### Migration Guide
-**For existing users**: Update your `.claude/settings.json`:
-
-Replace:
-```json
-{
-  "extraKnownMarketplaces": {
-    "sb-marketplace": {
-      "source": {
-        "source": "directory",
-        "path": "./.claude/sb-marketplace"
-      }
-    }
-  }
-}
-```
-
-With:
-```json
-{
-  "extraKnownMarketplaces": {
-    "sb-marketplace": {
-      "source": {
-        "source": "github",
-        "repo": "superbenefit/sb-marketplace"
-      }
-    }
-  }
-}
-```
-
-Then restart Claude Code.
-
 ## [0.2.0] - 2025-10-19
 
 ### Added
@@ -101,14 +104,7 @@ Then restart Claude Code.
 - `.claude-plugin/marketplace.json` - Marketplace manifest
 - `setup.sh` - Installation script with auto-detection and jq support
 - `.gitignore` - Configuration for `.claude/` directory
-- Documentation structure (README.md, ARCHITECTURE_SPEC.md, etc.)
-
-### Features
-- Auto-detects project-local vs global installation
-- Automatic Claude Code settings configuration
-- Settings backup on installation
-- Manual fallback when jq is unavailable
-- Support for multiple plugins in marketplace
+- Documentation structure (README.md)
 
 ### Plugins Included
 - **astro-dev v0.2.0** - Astro/Starlight development toolkit
@@ -116,44 +112,21 @@ Then restart Claude Code.
 
 ---
 
-## Commit History
-
-### 2025-10-19
-- Add comprehensive claude.md context file and update README
-
-### 2025-10-18
-- `599851a` - Fix marketplace source type from 'local' to 'directory'
-- `0955540` - Fix plugin version inconsistencies and document usage issues
-- `553af3a` - Update setup.sh to reflect v2.0 architecture
-- `02c6b7e` - Add claude.md snippet to READMEs
-- `0f65f4b` - Add .claude/ to .gitignore
-- `9d7061d` - Fix: Update README and manifest with understated tone
-- `da1cafa` - 🎉 v2.0 Implementation Complete
-- `f50732d` - Phase 4c: Final manifest and documentation updates
-- `5da0376` - Phase 4b: Knowledge base consolidation (17→5 files)
-- `df7a26b` - Phase 4a: Remove broken components
-- `0fe33e6` - Phase 3b: Complete command layer updates
-- `6834349` - Add implementation status tracking document
-- `4a2b7d0` - Phase 3a: Command layer updates
-- `cd903cc` - Phase 2a: Skill reorganization and renaming
-- `0e642f0` - Phase 1: Core architecture with intelligent orchestration
-- `6f9b667` - Initial commit with architecture specification v2.0
-
----
-
 ## Version Summary
 
 | Component | Version | Status |
 |-----------|---------|--------|
-| **sb-marketplace** | 0.2.0 | Initial Development |
-| **astro-dev plugin** | 0.2.0 | Initial Development |
+| **sb-marketplace** | 0.5.0 | Production |
+| **astro-dev** | 0.4.0 | Production |
+| **cloudflare-dev** | 0.1.0 | Production |
+| **project-mgmt** | 0.1.0 | Initial Release |
 
 ## Links
 
-- [Plugin Changelog](./astro-dev/CHANGELOG.md) - Plugin-specific version history
-- [Architecture Specification](./ARCHITECTURE_SPEC.md) - System design documentation
-- [Implementation Status](./IMPLEMENTATION_STATUS.md) - Development progress tracking
-- [Claude Context](./claude.md) - Repository context for AI assistants
+- [astro-dev Changelog](./astro-dev/CHANGELOG.md)
+- [cloudflare-dev Changelog](./cloudflare-dev/CHANGELOG.md)
+- [project-mgmt Changelog](./project-mgmt/CHANGELOG.md)
+- [Contributing Guide](./CONTRIBUTING.md)
 
 ---
 

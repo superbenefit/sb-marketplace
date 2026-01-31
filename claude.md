@@ -1,19 +1,19 @@
 # sb-marketplace: Claude Code Context
 
-**Quick Reference**: SuperBenefit plugin marketplace for Claude Code - provides an Astro/Starlight development toolkit, a Cloudflare developer platform toolkit, and a knowledge skill builder.
+**Quick Reference**: SuperBenefit plugin marketplace for Claude Code - provides an Astro/Starlight development toolkit, a Cloudflare developer platform toolkit, and a project management workflow.
 
 ## Project Identity
 
 - **Name**: sb-marketplace (SuperBenefit Plugin Marketplace)
-- **Version**: 0.4.0 (Marketplace)
-- **Plugins**: astro-dev v0.4.0, cloudflare-dev v0.1.0, knowledge-skill-builder v1.0.0
+- **Version**: 0.5.0 (Marketplace)
+- **Plugins**: astro-dev v0.4.0, cloudflare-dev v0.1.0, project-mgmt v0.1.0
 - **Type**: Claude Code Plugin Marketplace
 - **Repository**: https://github.com/superbenefit/sb-marketplace
 - **Status**: Production Ready
 - **License**: CC0 1.0 Universal (Public Domain)
 - **Author**: rathermercurial.eth
 - **Community**: SuperBenefit
-- **Last Updated**: 2026-01-30
+- **Last Updated**: 2026-01-31
 
 ## Directory Structure
 
@@ -84,18 +84,20 @@ sb-marketplace/                    # GitHub repository root
 │   ├── README.md
 │   ├── CHANGELOG.md
 │   └── LICENSE
-├── knowledge-skill-builder/      # Knowledge skill builder (v1.0.0)
+├── project-mgmt/                 # Project management plugin (v0.1.0)
 │   ├── .claude-plugin/
 │   │   └── plugin.json
+│   ├── agents/
+│   │   └── pm-bookkeeper.md      # Background file update agent (Haiku)
 │   ├── skills/
-│   │   └── knowledge-skill-builder/
+│   │   └── project-mgmt/
 │   │       ├── SKILL.md
-│   │       ├── assets/templates/
-│   │       ├── references/
-│   │       └── scripts/
-│   ├── README.md
-│   ├── CHANGELOG.md
-│   └── LICENSE
+│   │       ├── references/       # 6 phase files (start, specify, plan, implement, pr, sync)
+│   │       ├── assets/           # 4 templates (plan, spec, findings, progress)
+│   │       └── scripts/          # init-session.sh, check-complete.sh
+│   ├── hooks/
+│   │   └── hooks.json
+│   └── README.md
 ├── CONTRIBUTING.md
 ├── CHANGELOG.md
 ├── LICENSE
@@ -197,18 +199,53 @@ Cloudflare developer platform toolkit - patterns, best practices, and automation
 
 ---
 
-## knowledge-skill-builder Plugin (v1.0.0)
+## project-mgmt Plugin (v0.1.0)
 
-Transforms markdown knowledge repositories into Claude skills with guided analysis, generation, and packaging tools.
+Spec-driven development with persistent markdown planning. Single skill + single subagent.
 
-See `knowledge-skill-builder/README.md` for details.
+### Workflow Phases
+
+| Phase | Reference | Purpose |
+|-------|-----------|---------|
+| Start | `references/start.md` | Initialize `.project/{issue#}/` from GitHub issue |
+| Specify | `references/specify.md` | Define requirements in spec.md |
+| Plan | `references/plan.md` | Create implementation steps with checkboxes |
+| Implement | `references/implement.md` | Execute steps with progress tracking |
+| PR | `references/pr.md` | Create pull request |
+| Sync | `references/sync.md` | Update GitHub issue |
+
+### Project Files
+
+Created in `.project/{issue#}/`:
+
+| File | Purpose |
+|------|---------|
+| plan.md | Implementation steps + session context |
+| spec.md | Requirements (what & why) |
+| findings.md | Research, technical decisions |
+| progress.md | Session log, errors |
+
+### Components
+
+| Component | Type | Purpose |
+|-----------|------|---------|
+| `project-mgmt` | Skill | Core workflow, auto-invokes for complex tasks |
+| `pm-bookkeeper` | Subagent | Background file updates (Haiku, non-blocking) |
+
+### Key Rules
+
+1. Create plan.md before starting work
+2. Save findings after every 2 search/view operations
+3. Log all errors to progress.md
+4. Re-read plan.md before major decisions
+5. Run pm-bookkeeper in background for file updates
 
 ---
 
 ## Configuration
 
 ### Marketplace Manifest (`.claude-plugin/marketplace.json`)
-Registers all 3 plugins. Current version: 0.4.0
+Registers all 3 plugins. Current version: 0.5.0
 
 ### MCP Configurations
 - `astro-dev/.mcp.json` - Astro docs MCP server
@@ -231,7 +268,7 @@ Add to settings (global `~/.claude/settings.json` or project `.claude/settings.l
   "enabledPlugins": {
     "astro-dev@sb-marketplace": true,
     "cloudflare-dev@sb-marketplace": true,
-    "knowledge-skill-builder@sb-marketplace": true
+    "project-mgmt@sb-marketplace": true
   }
 }
 ```
@@ -266,5 +303,8 @@ CC0 1.0 Universal - Public Domain Dedication
 ### Cloudflare Commands
 `/cf-dev [task]` | `/validate [path]` | `/deploy-check` | `/test-mcp`
 
-**Marketplace**: v0.4.0 | **astro-dev**: v0.4.0 | **cloudflare-dev**: v0.1.0 | **knowledge-skill-builder**: v1.0.0
+### Project Management
+`/project-mgmt [start #123 | sync]`
+
+**Marketplace**: v0.5.0 | **astro-dev**: v0.4.0 | **cloudflare-dev**: v0.1.0 | **project-mgmt**: v0.1.0
 **Repository**: https://github.com/superbenefit/sb-marketplace

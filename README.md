@@ -1,6 +1,6 @@
 # SuperBenefit Plugin Marketplace
 
-Claude Code plugin marketplace for the SuperBenefit community. Provides development toolkits, knowledge builders, and platform-specific automation through the Claude Code plugin system.
+Claude Code plugin marketplace for the SuperBenefit community. Provides development toolkits and platform-specific automation through the Claude Code plugin system.
 
 ## Plugins
 
@@ -8,7 +8,7 @@ Claude Code plugin marketplace for the SuperBenefit community. Provides developm
 |--------|---------|-------------|
 | [astro-dev](./astro-dev/) | 0.4.0 | Astro/Starlight development toolkit with tiered knowledge loading |
 | [cloudflare-dev](./cloudflare-dev/) | 0.1.0 | Cloudflare Workers, Agents SDK, MCP, Vectorize, and Workflows toolkit |
-| [knowledge-skill-builder](./knowledge-skill-builder/) | 1.0.0 | Transform markdown repositories into Claude skills |
+| [project-mgmt](./project-mgmt/) | 0.1.0 | Spec-driven development with persistent markdown planning |
 
 ## Installation
 
@@ -27,7 +27,7 @@ Add the marketplace to your Claude Code settings (global `~/.claude/settings.jso
   "enabledPlugins": {
     "astro-dev@sb-marketplace": true,
     "cloudflare-dev@sb-marketplace": true,
-    "knowledge-skill-builder@sb-marketplace": true
+    "project-mgmt@sb-marketplace": true
   }
 }
 ```
@@ -57,13 +57,14 @@ Cloudflare developer platform toolkit covering Workers, Agents SDK, MCP servers,
 
 See [cloudflare-dev/README.md](./cloudflare-dev/README.md) for full documentation.
 
-### knowledge-skill-builder
+### project-mgmt
 
-Guided tooling for transforming markdown knowledge repositories into properly-structured Claude skills. Includes repository analysis, template-based generation, validation, and packaging scripts.
+Spec-driven development with persistent markdown planning. Uses the filesystem as persistent memory with plan.md, spec.md, findings.md, and progress.md in `.project/{issue#}/` directories.
 
-**Skills**: knowledge-skill-builder (analysis, generation, validation, packaging)
+**Skills**: project-mgmt (6-phase workflow with progressive disclosure)
+**Agents**: pm-bookkeeper (background file updates, Haiku)
 
-See [knowledge-skill-builder/README.md](./knowledge-skill-builder/README.md) for full documentation.
+See [project-mgmt/README.md](./project-mgmt/README.md) for full documentation.
 
 ## Contributing
 

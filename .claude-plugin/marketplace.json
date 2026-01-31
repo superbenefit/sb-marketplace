@@ -5,8 +5,8 @@
     "email": "info@superbenefit.org"
   },
   "metadata": {
-    "description": "SuperBenefit plugin marketplace for Claude Code - Development tools, knowledge skill builders, and Cloudflare platform toolkit",
-    "version": "0.4.0"
+    "description": "SuperBenefit plugin marketplace for Claude Code - Development tools and platform toolkits",
+    "version": "0.5.0"
   },
   "plugins": [
     {
@@ -27,24 +27,6 @@
       "category": "development"
     },
     {
-      "name": "knowledge-skill-builder",
-      "source": "./knowledge-skill-builder",
-      "description": "Transform markdown knowledge repositories into Claude skills with guided analysis, generation, and packaging tools",
-      "version": "1.0.0",
-      "author": {
-        "name": "SuperBenefit Community",
-        "email": "info@superbenefit.org"
-      },
-      "tags": [
-        "skills",
-        "knowledge",
-        "documentation",
-        "frameworks",
-        "tools"
-      ],
-      "category": "tools"
-    },
-    {
       "name": "cloudflare-dev",
       "source": "./cloudflare-dev",
       "description": "Cloudflare developer platform toolkit - patterns, best practices, and automation for Workers, Agents SDK, MCP, Vectorize, and Workflows",
@@ -61,6 +43,23 @@
         "mcp"
       ],
       "category": "development"
+    },
+    {
+      "name": "project-mgmt",
+      "source": "./project-mgmt",
+      "description": "Spec-driven development with persistent markdown planning - structured workflow for GitHub issues, specifications, and implementation tracking",
+      "version": "0.1.0",
+      "author": {
+        "name": "rathermercurial.eth",
+        "email": "rathermercurial@protonmail.com"
+      },
+      "tags": [
+        "project-management",
+        "github",
+        "workflow",
+        "planning"
+      ],
+      "category": "tools"
     }
   ]
 }
