@@ -9,24 +9,12 @@
   },
   "repository": "https://github.com/superbenefit/sb-marketplace",
   "license": "CC0",
-  "tags": [
+  "keywords": [
     "astro",
     "starlight",
     "development",
     "documentation",
-    "simplified",
     "superbenefit"
   ],
-  "skills": [
-    {
-      "name": "astro-coding",
-      "path": "skills/astro-coding",
-      "description": "Tiered knowledge provider: critical rules (always), common patterns (context-based), deep-dive references (on-demand)"
-    },
-    {
-      "name": "astro-knowledge",
-      "path": "skills/astro-knowledge",
-      "description": "Quick API documentation and reference lookup for Astro/Starlight"
-    }
-  ]
+  "skills": "./skills/"
 }
