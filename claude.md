@@ -1,26 +1,26 @@
 # sb-marketplace: Claude Code Context
 
-**Quick Reference**: SuperBenefit plugin marketplace for Claude Code - provides an Astro/Starlight development toolkit, a Cloudflare developer platform toolkit, and a project management workflow.
+**Quick Reference**: SuperBenefit plugin marketplace for Claude Code - provides an Astro/Starlight development toolkit, a Cloudflare developer platform toolkit, a project management workflow, and a Hermes Tweet social intelligence plugin.
 
 ## Project Identity
 
 - **Name**: sb-marketplace (SuperBenefit Plugin Marketplace)
-- **Version**: 0.5.0 (Marketplace)
-- **Plugins**: astro-dev v0.4.0, cloudflare-dev v0.1.0, project-mgmt v0.1.0
+- **Version**: 0.6.0 (Marketplace)
+- **Plugins**: astro-dev v0.4.0, cloudflare-dev v0.1.0, project-mgmt v0.1.0, hermes-tweet v0.1.6
 - **Type**: Claude Code Plugin Marketplace
 - **Repository**: https://github.com/superbenefit/sb-marketplace
 - **Status**: Production Ready
 - **License**: CC0 1.0 Universal (Public Domain)
 - **Author**: rathermercurial.eth
 - **Community**: SuperBenefit
-- **Last Updated**: 2026-01-31
+- **Last Updated**: 2026-06-13
 
 ## Directory Structure
 
 ```
 sb-marketplace/                    # GitHub repository root
 ├── .claude-plugin/
-│   └── marketplace.json          # Marketplace manifest (3 plugins)
+│   └── marketplace.json          # Marketplace manifest (4 plugins)
 ├── astro-dev/                    # Astro/Starlight plugin (v0.4.0)
 │   ├── .claude-plugin/
 │   │   └── plugin.json
@@ -98,6 +98,14 @@ sb-marketplace/                    # GitHub repository root
 │   ├── hooks/
 │   │   └── hooks.json
 │   └── README.md
+├── hermes-tweet/                 # Hermes Tweet plugin (v0.1.6)
+│   ├── .claude-plugin/
+│   │   └── plugin.json
+│   ├── skills/
+│   │   └── hermes-tweet/
+│   │       └── SKILL.md
+│   ├── README.md
+│   └── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── CHANGELOG.md
 ├── LICENSE
@@ -242,10 +250,30 @@ Created in `.project/{issue#}/`:
 
 ---
 
+## hermes-tweet Plugin (v0.1.6)
+
+Hermes Agent X/Twitter plugin for social research, timeline review, tweet
+analysis, and explicitly gated action workflows through Xquik.
+
+### Hermes Tweet Components
+
+| Component | Type | Purpose |
+|-----------|------|---------|
+| `hermes-tweet` | Skill | Read-first workflow guide for Hermes Tweet |
+
+### Key Rules
+
+1. Prefer search, profile context, timeline review, monitoring, and tweet analysis.
+2. Install upstream runtime support with `hermes plugins install Xquik-dev/hermes-tweet --enable`.
+3. Set `XQUIK_API_KEY` through Hermes, the process environment, or `~/.hermes/.env`.
+4. Enable write actions only with `HERMES_TWEET_ENABLE_ACTIONS=true`.
+
+---
+
 ## Configuration
 
 ### Marketplace Manifest (`.claude-plugin/marketplace.json`)
-Registers all 3 plugins. Current version: 0.5.0
+Registers all 4 plugins. Current version: 0.6.0
 
 ### MCP Configurations
 - `astro-dev/.mcp.json` - Astro docs MCP server
@@ -268,7 +296,8 @@ Add to settings (global `~/.claude/settings.json` or project `.claude/settings.l
   "enabledPlugins": {
     "astro-dev@sb-marketplace": true,
     "cloudflare-dev@sb-marketplace": true,
-    "project-mgmt@sb-marketplace": true
+    "project-mgmt@sb-marketplace": true,
+    "hermes-tweet@sb-marketplace": true
   }
 }
 ```

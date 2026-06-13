@@ -1,0 +1,20 @@
+{
+  "name": "hermes-tweet",
+  "description": "Hermes Agent X/Twitter research and automation plugin with read-first workflows and opt-in action gates",
+  "version": "0.1.6",
+  "author": {
+    "name": "Xquik",
+    "url": "https://github.com/Xquik-dev"
+  },
+  "repository": "https://github.com/Xquik-dev/hermes-tweet",
+  "license": "MIT",
+  "keywords": [
+    "hermes-agent",
+    "twitter",
+    "x",
+    "social-intelligence",
+    "automation",
+    "xquik"
+  ],
+  "skills": "./skills/"
+}

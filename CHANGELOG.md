@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-06-13
+
+### Added
+- **hermes-tweet v0.1.6** - Hermes Agent X/Twitter research and automation plugin
+  - Read-first workflow guide for search, profile context, timeline review, and tweet analysis
+  - Upstream Hermes Agent install documentation for `Xquik-dev/hermes-tweet`
+  - Explicit action gating notes for `HERMES_TWEET_ENABLE_ACTIONS=true`
+  - See [hermes-tweet/CHANGELOG.md](./hermes-tweet/CHANGELOG.md) for details
+
+### Changed
+- Marketplace version bumped to 0.6.0
+- Updated README and claude.md to reflect 4-plugin marketplace
+
 ## [0.5.0] - 2026-01-31
 
 ### Added
@@ -116,16 +129,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Component | Version | Status |
 |-----------|---------|--------|
-| **sb-marketplace** | 0.5.0 | Production |
+| **sb-marketplace** | 0.6.0 | Production |
 | **astro-dev** | 0.4.0 | Production |
 | **cloudflare-dev** | 0.1.0 | Production |
 | **project-mgmt** | 0.1.0 | Initial Release |
+| **hermes-tweet** | 0.1.6 | Initial Release |
 
 ## Links
 
 - [astro-dev Changelog](./astro-dev/CHANGELOG.md)
 - [cloudflare-dev Changelog](./cloudflare-dev/CHANGELOG.md)
 - [project-mgmt Changelog](./project-mgmt/CHANGELOG.md)
+- [hermes-tweet Changelog](./hermes-tweet/CHANGELOG.md)
 - [Contributing Guide](./CONTRIBUTING.md)
 
 ---
