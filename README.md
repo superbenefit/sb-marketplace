@@ -1,6 +1,6 @@
 # SuperBenefit Plugin Marketplace
 
-Claude Code plugin marketplace for the SuperBenefit community. Provides development toolkits and platform-specific automation through the Claude Code plugin system.
+Claude Code plugin marketplace for the SuperBenefit community. Provides development toolkits, platform-specific automation, and social intelligence workflows through the Claude Code plugin system.
 
 ## Plugins
 
@@ -9,6 +9,7 @@ Claude Code plugin marketplace for the SuperBenefit community. Provides developm
 | [astro-dev](./astro-dev/) | 0.4.0 | Astro/Starlight development toolkit with tiered knowledge loading |
 | [cloudflare-dev](./cloudflare-dev/) | 0.1.0 | Cloudflare Workers, Agents SDK, MCP, Vectorize, and Workflows toolkit |
 | [project-mgmt](./project-mgmt/) | 0.1.0 | Spec-driven development with persistent markdown planning |
+| [hermes-tweet](./hermes-tweet/) | 0.1.6 | Hermes Agent X/Twitter research and automation with opt-in actions |
 
 ## Installation
 
@@ -27,7 +28,8 @@ Add the marketplace to your Claude Code settings (global `~/.claude/settings.jso
   "enabledPlugins": {
     "astro-dev@sb-marketplace": true,
     "cloudflare-dev@sb-marketplace": true,
-    "project-mgmt@sb-marketplace": true
+    "project-mgmt@sb-marketplace": true,
+    "hermes-tweet@sb-marketplace": true
   }
 }
 ```
@@ -65,6 +67,16 @@ Spec-driven development with persistent markdown planning. Uses the filesystem a
 **Agents**: pm-bookkeeper (background file updates, Haiku)
 
 See [project-mgmt/README.md](./project-mgmt/README.md) for full documentation.
+
+### hermes-tweet
+
+Hermes Agent X/Twitter plugin for social research, timeline review, tweet analysis, and explicitly gated action workflows through Xquik.
+
+**Skills**: hermes-tweet (read-first workflow guide)
+**Runtime**: Native Hermes Agent plugin
+**Actions**: Require explicit `HERMES_TWEET_ENABLE_ACTIONS=true`
+
+See [hermes-tweet/README.md](./hermes-tweet/README.md) for full documentation.
 
 ## Contributing
 
